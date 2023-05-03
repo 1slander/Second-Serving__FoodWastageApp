@@ -2,16 +2,23 @@
   <h2>Sign Up</h2>
   <form action="/auth/signup" method="POST">
 
-    <label> Username
+    <label> Username:
       <input type="text" name="username" placeholder="Your username" />
     </label>
 
-    <label> Email
+    <label> Email:
       <input type="email" name="email" placeholder="Your email" />
     </label>
 
-    <label> Password
+    <label> Password:
       <input type="password" name="password" placeholder="Your password" />
+    </label>
+    <br>
+    <label> Address:
+      <input type="text" name="address" placeholder="Adress" />
+      <input type="text" name="city" placeholder="city" />
+      <input type="text" name="postcode" placeholder="postcode" />
+      <input type="text" name="country" placeholder="country" />
     </label>
 
     <button type="submit">Sign Up</button>
