@@ -21,8 +21,9 @@ router.get("/signup", isLoggedOut, (req, res) => {
 });
 
 // POST /auth/signup
-router.post("/signup", isLoggedOut, (req, res) => {
-  const { username, email, password } = req.body;
+router.post("/signup", isLoggedOut, (req, res,next) => {
+  const { username, email, password, location, address,city,postcode,country} = req.body;
+  console.log("This info", req.body)
 
   // Check that username, email, and password are provided
   if (username === "" || email === "" || password === "") {
@@ -61,10 +62,10 @@ router.post("/signup", isLoggedOut, (req, res) => {
     .then((salt) => bcrypt.hash(password, salt))
     .then((hashedPassword) => {
       // Create a user and save it in the database
-      return User.create({ username, email, password: hashedPassword });
+      return User.create({ username, email, password: hashedPassword, location:{address,city,postcode,country}});
     })
     .then((user) => {
-      res.redirect("/auth/login");
+      res.redirect("/login");
     })
     .catch((error) => {
       if (error instanceof mongoose.Error.ValidationError) {
@@ -134,7 +135,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
           // Remove the password field
           delete req.session.currentUser.password;
 
-          res.redirect("/");
+          res.redirect("/userProfile");
         })
         .catch((err) => next(err)); // In this case, we send error handling to the error handling middleware.
     })
@@ -142,7 +143,8 @@ router.post("/login", isLoggedOut, (req, res, next) => {
 });
 
 // GET /auth/logout
-router.get("/logout", isLoggedIn, (req, res) => {
+router.post("/logout", isLoggedIn, (req, res) => {
+  console.log('user logout')
   req.session.destroy((err) => {
     if (err) {
       res.status(500).render("auth/logout", { errorMessage: err.message });
@@ -153,4 +155,12 @@ router.get("/logout", isLoggedIn, (req, res) => {
   });
 });
 
+
+// User profile
+
+router.get("/userProfile", (req, res) =>
+  res.render("users/userProfile.hbs", {
+    userInSession: req.session.currentUser,
+  })
+);
 module.exports = router;

@@ -1,5 +1,10 @@
 <h1>{{appTitle}} 🚀</h1>
 <p>Welcome Ironhacker!</p>
 
+{{#if userInSession}}
+<a href="/userProfile">Profile</a>
+<a href="#">Adverts</a>
+{{else}}
 <a href="/signup">sign up</a>
 <a href="/login">login</a>
+{{/if}}
