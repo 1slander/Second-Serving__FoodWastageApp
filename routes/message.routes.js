@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const Message = require("../models/message");
 
-//To merge
 // Create a new message
 router.post("/messages", async (req, res) => {
   try {
