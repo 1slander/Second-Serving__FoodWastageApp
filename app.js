@@ -34,7 +34,10 @@ const advertRoutes = require("./routes/advert.routes");
 app.use("/adverts", advertRoutes);
 
 const cartRoutes = require("./routes/cart.routes");
-app.use('/cart',cartRoutes)
+app.use("/cart", cartRoutes);
+
+const messageRoutes = require("./routes/message.routes");
+app.use("/", messageRoutes);
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
 

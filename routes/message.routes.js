@@ -1,6 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const Message = require("../models/message");
+const Message = require("../models/Message.model");
+
+router.get("/messages", (req, res) => {
+  res.render("messages/messages.hbs");
+});
 
 // Create a new message
 router.post("/messages", async (req, res) => {
