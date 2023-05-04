@@ -11,7 +11,7 @@ router.get("/messages", async (req, res) => {
     const userMessages = await Message.find({ recipient: userId }).populate(
       "sender"
     );
-    console.log(userMessages);
+    //console.log(userMessages);
     res.render("messages/messages.hbs", { messages: userMessages });
   } catch (err) {
     console.log(err);
@@ -26,10 +26,10 @@ router.get("/sendMessage", async (req, res) => {
 
 router.post("/sendMessage", async (req, res) => {
   try {
-    console.log(req.body);
+    //console.log(req.body);
     const { recipient, message, subject } = req.body;
     const getUser = await User.findOne({ username: recipient });
-    console.log("This:", getUser);
+    //console.log("This:", getUser);
 
     const newMessage = new Message({
       sender: req.session.currentUser._id,
@@ -51,8 +51,38 @@ router.post("/sendMessage", async (req, res) => {
 router.get("/:messageId", async (req, res) => {
   try {
     const { messageId } = req.params;
-    const findedMessage = await Message.findById(messageId);
+    const findedMessage = await Message.findById(messageId).populate("sender");
     res.render("messages/message-detail.hbs", { findedMessage });
+  } catch (err) {
+    console.log(err);
+  }
+});
+//Reply Message
+router.get("/:messageId/reply", async (req, res) => {
+  try {
+    const { messageId } = req.params;
+    const findedMessage = await Message.findById(messageId).populate("sender");
+    res.render("messages/message-reply.hbs", { findedMessage });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+router.post("/:messageId/reply", async (req, res) => {
+  try {
+    //const { messageId } = req.params;
+    const { recipient, message, subject } = req.body;
+    const getUser = await User.findOne({ username: recipient });
+    //console.log("This:", getUser);
+
+    const newMessage = new Message({
+      sender: req.session.currentUser._id,
+      recipient: getUser._id,
+      message: message,
+      subject: subject,
+    });
+    const saveMessageDb = await newMessage.save();
+    res.redirect("/userProfile");
   } catch (err) {
     console.log(err);
   }
@@ -62,9 +92,9 @@ router.get("/:messageId", async (req, res) => {
 
 router.post("/:messageId/delete", async (req, res) => {
   try {
-    const {messageId} = req.params;
+    const { messageId } = req.params;
     const deleteMessege = await Message.findByIdAndDelete(messageId);
-    res.redirect('/messages')
+    res.redirect("/messages");
   } catch (error) {
     console.log(error);
   }
