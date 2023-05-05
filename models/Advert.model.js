@@ -9,10 +9,6 @@ const adSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     required: true,
   },
-  picture: {
-    type: String,
-    required: true,
-  },
   amount: {
     type: String,
     required: true,

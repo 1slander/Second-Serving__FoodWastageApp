@@ -1,0 +1,21 @@
+<div>
+  {{#each adverts}}
+  <div>
+    <img src="{{picture}}" alt="{{title}}">
+    <div>
+      <h5>{{title}}</h5>
+      <p>{{description}}</p>
+      <p><strong>Amount:</strong> {{amount}}</p>
+      <p><strong>Cost:</strong> {{cost}}</p>
+      <a href="#" class="btn btn-primary">Contact seller</a>
+      <a href="/adverts/{{_id}}" class="btn btn-success">Update</a>
+      <form action="/adverts/{{_id}}/delete" method="POST">
+        <button type="submit">Delete</button>
+      </form>
+    </div>
+    <div>
+      <small>Posted by {{sender.username}} on {{createdAt}}</small>
+    </div>
+  </div>
+  {{/each}}
+</div>
