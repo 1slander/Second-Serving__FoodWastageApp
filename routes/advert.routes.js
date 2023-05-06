@@ -37,7 +37,10 @@ router.get("/new", isLoggedIn, (req, res) => {
 router.get("/", async (req, res) => {
   try {
     const adverts = await AdvertModel.find().populate("sender", "username");
-    res.render("adverts/adverts", { adverts });
+    res.render("adverts/adverts", {
+      adverts,
+      userInSession: req.session.currentUser,
+    });
   } catch (error) {
     console.error(error);
     res.status(500).send("Server Error");
@@ -87,6 +90,7 @@ router.post("/:id", async (req, res) => {
 // Delete an advert
 router.post("/:id/delete", async (req, res) => {
   const { id } = req.params;
+  //We add _ _
   const sender = req.session.currentUser.__id;
 
   try {

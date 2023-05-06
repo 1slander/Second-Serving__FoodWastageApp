@@ -8,14 +8,17 @@ const isLoggedIn = require("../middleware/isLoggedIn");
 
 // Getting Messages to the Inbox
 
-router.get("/messages", isLoggedIn, async (req, res) => {
-  const userId = req.session.currentUser.__id;
+router.get("/messages", async (req, res) => {
+  const userId = req.session.currentUser._id;
   try {
     const userMessages = await Message.find({ recipient: userId }).populate(
       "sender"
     );
     //console.log(userMessages);
-    res.render("messages/messages.hbs", { messages: userMessages });
+    res.render("messages/messages.hbs", {
+      messages: userMessages,
+      userInSession: req.session.currentUser,
+    });
   } catch (err) {
     console.log(err);
   }
@@ -42,7 +45,7 @@ router.post("/sendMessage", isLoggedIn, async (req, res) => {
     });
     const saveMessageDb = await newMessage.save();
     res.status(201);
-    res.redirect("/userProfile");
+    res.redirect("/messages");
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Unable to save message" });
@@ -85,7 +88,7 @@ router.post("/:messageId/reply", async (req, res) => {
       subject: subject,
     });
     const saveMessageDb = await newMessage.save();
-    res.redirect("/userProfile");
+    res.redirect("/messages");
   } catch (err) {
     console.log(err);
   }
