@@ -10,12 +10,14 @@ const isLoggedIn = require("../middleware/isLoggedIn");
 // Create a new advert
 router.post("/adverts", isLoggedIn, async (req, res) => {
   const { title, amount, description, cost } = req.body;
-  const sender = req.session.currentUser._id;
+  const senderSession = req.session.currentUser;
+  console.log(senderSession);
   try {
     const newAdvert = await AdvertModel.create({
       title,
       amount,
-      sender: sender,
+      sender: req.session.currentUser._id,
+      creator: req.session.currentUser.username,
       description,
       cost,
     });

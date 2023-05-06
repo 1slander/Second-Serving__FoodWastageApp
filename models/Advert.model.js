@@ -9,6 +9,9 @@ const adSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     required: true,
   },
+  creator: {
+    type: String,
+  },
   amount: {
     type: String,
     required: true,
