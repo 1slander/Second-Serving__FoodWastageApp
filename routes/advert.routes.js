@@ -15,7 +15,7 @@ router.post("/adverts", isLoggedIn, async (req, res) => {
     const newAdvert = await AdvertModel.create({
       title,
       amount,
-      sender,
+      sender: sender,
       description,
       cost,
     });
@@ -44,15 +44,15 @@ router.get("/", async (req, res) => {
 
 // Update view
 
-router.get('/:id', async function(req, res) {
+router.get("/:id", async function (req, res) {
   const id = req.params.id;
   try {
     const advert = await AdvertModel.findById(id);
-    if (!advert) return res.status(404).send('Advert not found');
-    res.render('adverts/update-advert', { advert: advert });
+    if (!advert) return res.status(404).send("Advert not found");
+    res.render("adverts/update-advert", { advert: advert });
   } catch (error) {
     console.error(error);
-    res.status(500).send('Server Error');
+    res.status(500).send("Server Error");
   }
 });
 
@@ -96,7 +96,7 @@ router.post("/:id/delete", async (req, res) => {
         .send("You are not authorized to delete this advert");
     }
     await AdvertModel.findByIdAndDelete(id);
-    res.send("Advert removed");
+    res.redirect("/adverts");
   } catch (error) {
     console.error(error);
     res.status(500).send("Server Error");
