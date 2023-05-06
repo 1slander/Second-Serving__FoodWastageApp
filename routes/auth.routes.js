@@ -21,9 +21,18 @@ router.get("/signup", isLoggedOut, (req, res) => {
 });
 
 // POST /auth/signup
-router.post("/signup", isLoggedOut, (req, res,next) => {
-  const { username, email, password, location, address,city,postcode,country} = req.body;
-  console.log("This info", req.body)
+router.post("/signup", isLoggedOut, (req, res, next) => {
+  const {
+    username,
+    email,
+    password,
+    location,
+    address,
+    city,
+    postcode,
+    country,
+  } = req.body;
+  console.log("This info", req.body);
 
   // Check that username, email, and password are provided
   if (username === "" || email === "" || password === "") {
@@ -62,7 +71,12 @@ router.post("/signup", isLoggedOut, (req, res,next) => {
     .then((salt) => bcrypt.hash(password, salt))
     .then((hashedPassword) => {
       // Create a user and save it in the database
-      return User.create({ username, email, password: hashedPassword, location:{address,city,postcode,country}});
+      return User.create({
+        username,
+        email,
+        password: hashedPassword,
+        location: { address, city, postcode, country },
+      });
     })
     .then((user) => {
       res.redirect("/login");
@@ -144,7 +158,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
 
 // GET /auth/logout
 router.post("/logout", isLoggedIn, (req, res) => {
-  console.log('user logout')
+  console.log("user logout");
   req.session.destroy((err) => {
     if (err) {
       res.status(500).render("auth/logout", { errorMessage: err.message });
@@ -155,10 +169,9 @@ router.post("/logout", isLoggedIn, (req, res) => {
   });
 });
 
-
 // User profile
 
-router.get("/userProfile", (req, res) =>
+router.get("/userProfile", isLoggedIn, (req, res) =>
   res.render("users/userProfile.hbs", {
     userInSession: req.session.currentUser,
   })

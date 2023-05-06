@@ -87,7 +87,7 @@ router.post("/:id", async (req, res) => {
 // Delete an advert
 router.post("/:id/delete", async (req, res) => {
   const { id } = req.params;
-  const sender = req.session.currentUser._id;
+  const sender = req.session.currentUser.__id;
 
   try {
     const advert = await AdvertModel.findById(id);

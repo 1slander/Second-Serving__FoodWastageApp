@@ -6,11 +6,10 @@ const isLoggedIn = require("../middleware/isLoggedIn");
 
 /* GET home page */
 router.get("/", (req, res, next) => {
-  if (req.session) {
-    res.redirect("/adverts");
-  } else {
-    res.render("index");
-  }
+  // if (req.session) {
+  //   res.redirect("/adverts");
+  // } else {
+  res.render("index");
 });
 
 module.exports = router;

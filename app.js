@@ -12,6 +12,7 @@ const express = require("express");
 // Handles the handlebars
 // https://www.npmjs.com/package/hbs
 const hbs = require("hbs");
+const path = require("path");
 
 const app = express();
 
@@ -22,6 +23,14 @@ const capitalize = require("./utils/capitalize");
 const projectName = "FullStack_Project";
 
 app.locals.appTitle = `${capitalize(projectName)} created with IronLauncher`;
+
+//Partials
+const viewsPath = path.join(__dirname, "views");
+const partialsPath = path.join(__dirname, "views", "partials");
+app.set("view engine", "hbs");
+app.set("views", viewsPath);
+
+hbs.registerPartials(partialsPath);
 
 // 👇 Start handling routes here
 const indexRoutes = require("./routes/index.routes");

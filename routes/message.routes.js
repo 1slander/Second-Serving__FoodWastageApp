@@ -3,10 +3,13 @@ const router = express.Router();
 const Message = require("../models/Message.model");
 const User = require("../models/User.model");
 
+const isLoggedOut = require("../middleware/isLoggedOut");
+const isLoggedIn = require("../middleware/isLoggedIn");
+
 // Getting Messages to the Inbox
 
-router.get("/messages", async (req, res) => {
-  const userId = req.session.currentUser._id;
+router.get("/messages", isLoggedIn, async (req, res) => {
+  const userId = req.session.currentUser.__id;
   try {
     const userMessages = await Message.find({ recipient: userId }).populate(
       "sender"
@@ -20,11 +23,11 @@ router.get("/messages", async (req, res) => {
 
 // Create a new message
 
-router.get("/sendMessage", async (req, res) => {
+router.get("/sendMessage", isLoggedIn, async (req, res) => {
   res.render("messages/send-messages.hbs");
 });
 
-router.post("/sendMessage", async (req, res) => {
+router.post("/sendMessage", isLoggedIn, async (req, res) => {
   try {
     //console.log(req.body);
     const { recipient, message, subject } = req.body;
@@ -48,7 +51,7 @@ router.post("/sendMessage", async (req, res) => {
 
 //Display Message Details
 
-router.get("/:messageId", async (req, res) => {
+router.get("/:messageId", isLoggedIn, async (req, res) => {
   try {
     const { messageId } = req.params;
     const findedMessage = await Message.findById(messageId).populate("sender");
@@ -58,7 +61,7 @@ router.get("/:messageId", async (req, res) => {
   }
 });
 //Reply Message
-router.get("/:messageId/reply", async (req, res) => {
+router.get("/:messageId/reply", isLoggedIn, async (req, res) => {
   try {
     const { messageId } = req.params;
     const findedMessage = await Message.findById(messageId).populate("sender");
@@ -90,7 +93,7 @@ router.post("/:messageId/reply", async (req, res) => {
 
 //Delete Messages
 
-router.post("/:messageId/delete", async (req, res) => {
+router.post("/:messageId/delete", isLoggedIn, async (req, res) => {
   try {
     const { messageId } = req.params;
     const deleteMessege = await Message.findByIdAndDelete(messageId);
