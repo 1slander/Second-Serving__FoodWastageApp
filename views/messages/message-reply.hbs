@@ -1,0 +1,24 @@
+<h1>Reply</h1>
+
+<form action="/{{findedMessage._id}}/reply" method="POST">
+  <label for="recipient">Recipient:</label>
+  <input
+    type="text"
+    name="recipient"
+    id="recipient"
+    value="{{findedMessage.sender.username}}"
+  />
+
+  <label for="subject">Subject:</label>
+  <input
+    type="text"
+    name="subject"
+    id="subject"
+    value="{{findedMessage.subject}}"
+  />
+
+  <label for="message">Message:</label>
+  <textarea name="message" id="message" rows="5"></textarea>
+
+  <button type="submit">Send Message</button>
+</form>

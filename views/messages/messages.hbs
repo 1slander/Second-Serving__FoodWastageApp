@@ -1,12 +1,53 @@
-<form action="/send-message" method="POST">
-  <label for="recipient">Recipient:</label>
-  <input type="text" name="recipient" id="recipient" />
+<h1>You Inbox</h1>
 
-  <label for="subject">Subject:</label>
-  <input type="text" name="subject" id="subject" />
+{{#if messages}}
+  <table>
 
-  <label for="message">Message:</label>
-  <textarea name="message" id="message" rows="5"></textarea>
+    <th>
+      <tr>
+        <th>
+          User
+        </th>
+        <th>
+          Subject
+        </th>
+        <th>
+          Message
+        </th>
+      </tr>
+    </th>
+    <tbody>
+      {{#each messages}}
+        <tr>
+          <td>
+            {{this.sender.username}}
+          </td>
+          <td>
+            <a href="/{{this._id}}">{{this.subject}}</a>
 
-  <button type="submit">Send Message</button>
-</form>
+          </td>
+          <td>
+            <p>
+              {{this.message}}
+            </p>
+          </td>
+          <td>
+            <form action="/{{this._id}}/delete" method="post">
+              <button
+                type="s
+            "
+              >Delete</button>
+            </form>
+          </td>
+        </tr>
+
+      {{/each}}
+    </tbody>
+  </table>
+{{else}}
+  <p>No Messages</p>
+{{/if}}
+
+<a href="/sendMessage">Write a message</a>
+
+<a href="/userProfile">Go Back</a>
