@@ -31,13 +31,13 @@ h1 {
 
 /* NAVBAR */
 
-nav {
+.navbar {
   display: flex;
   justify-content: end;
   margin: 1em;
 }
 
-nav > ul {
+.navbar-menu {
   font-size: 1rem;
   list-style: none;
   display: flex;
