@@ -4,18 +4,22 @@
       <img src="{{picture}}" alt="{{title}}" />
       <div>
         <h5>{{title}}</h5>
-        <p>{{description}}</p>
-        <p><strong>Amount:</strong> {{amount}}</p>
-        <p><strong>Cost:</strong> {{cost}}</p>
-        <a href="#" class="btn btn-primary">Contact seller</a>
+        <button class="open-button">Details</button>
         <a href="/adverts/{{_id}}" class="btn btn-success">Update</a>
         <form action="/adverts/{{_id}}/delete" method="POST">
           <button type="submit">Delete</button>
         </form>
       </div>
-      <div>
-        <small>Posted by <strong>{{creator}}</strong> on {{createdAt}}</small>
-      </div>
     </div>
+    <dialog class="modal" id="modal">
+      <h2>{{title}}</h2>
+      <p>{{description}}</p>
+      <p><strong>Amount:</strong> {{amount}}</p>
+      <p><strong>Cost:</strong> {{cost}}</p>
+      <a href="#" class="btn btn-primary">Contact seller</a>
+      <p>Details</p>
+      <small>Posted by <strong>{{creator}}</strong> on {{createdAt}}</small>
+      <button class="close-button">Close</button>
+    </dialog>
   {{/each}}
 </div>

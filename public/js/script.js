@@ -2,3 +2,17 @@
 document.addEventListener("DOMContentLoaded", () => {
   console.log("FullStack_Project JS imported successfully!");
 });
+
+const modal = document.querySelector(`#modal`);
+const openModal = document.querySelector(`.open-button`);
+const closeModal = document.querySelector(`.close-button`);
+
+// Open modal
+openModal.addEventListener(`click`, () => {
+  modal.showModal();
+});
+
+// Close modal
+closeModal.addEventListener(`click`, () => {
+  modal.close();
+});
