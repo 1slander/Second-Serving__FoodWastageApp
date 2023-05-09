@@ -3,16 +3,25 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("FullStack_Project JS imported successfully!");
 });
 
-const modal = document.querySelector(`#modal`);
-const openModal = document.querySelector(`.open-button`);
-const closeModal = document.querySelector(`.close-button`);
+const modal = document.querySelectorAll(`.modal`);
+const openModal = document.querySelectorAll(`.open-button`);
+const closeModal = document.querySelectorAll(`.close-button`);
 
-// Open modal
-openModal.addEventListener(`click`, () => {
-  modal.showModal();
+//open Modal
+openModal.forEach((button) => {
+  button.addEventListener(`click`, (e) => {
+    const buttonId = e.target.getAttribute("id");
+    const rightModal = [...modal].filter((el) => {
+      const modalId = el.getAttribute("id");
+      return buttonId === modalId;
+    });
+    rightModal[0].showModal();
+  });
 });
 
 // Close modal
-closeModal.addEventListener(`click`, () => {
-  modal.close();
+closeModal.forEach((button) => {
+  button.addEventListener(`click`, () => {
+    modal.forEach((el) => el.close());
+  });
 });

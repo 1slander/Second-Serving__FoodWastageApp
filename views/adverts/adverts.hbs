@@ -1,17 +1,17 @@
 <div class="card-advert">
   {{#each adverts}}
-    <div>
+    <div class="card-advert-info">
       <img src="{{picture}}" alt="{{title}}" />
       <div>
         <h5>{{title}}</h5>
-        <button class="open-button">Details</button>
+        <button class="open-button" id="{{@index}}">Details</button>
         <a href="/adverts/{{_id}}" class="btn btn-success">Update</a>
         <form action="/adverts/{{_id}}/delete" method="POST">
           <button type="submit">Delete</button>
         </form>
       </div>
     </div>
-    <dialog class="modal" id="modal">
+    <dialog class="modal" id="{{@index}}">
       <h2>{{title}}</h2>
       <p>{{description}}</p>
       <p><strong>Amount:</strong> {{amount}}</p>
