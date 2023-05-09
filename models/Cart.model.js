@@ -1,23 +1,42 @@
 const { Schema, model } = require("mongoose");
 
-const cartSchema = new Schema({
-  user: {
-    type: Schema.Types.ObjectId,
-    required: true,
-    ref: "User",
-  },
+let ProductSchema = new Schema({
   products: [{ type: Schema.Types.ObjectId, ref: "Advert" }],
-  createdAt: {
-    type: Date,
-    default: Date.now,
-    required: true,
+  title: {
+    type: String,
   },
-  updatedAt: {
-    type: Date,
-    default: Date.now,
-    required: true,
+  amount: {
+    type: String,
+  },
+  cost: {
+    type: Number,
   },
 });
+
+const cartSchema = new Schema(
+  {
+    user: {
+      type: Schema.Types.ObjectId,
+      required: true,
+      ref: "User",
+    },
+    // products: [{ type: Schema.Types.ObjectId, ref: "Advert" }],
+    products: [ProductSchema],
+    createdAt: {
+      type: Date,
+      default: Date.now,
+      required: true,
+    },
+    updatedAt: {
+      type: Date,
+      default: Date.now,
+      required: true,
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
 
 const Cart = model("Cart", cartSchema);
 
