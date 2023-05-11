@@ -1,17 +1,5 @@
 const { Schema, model } = require("mongoose");
 const AdvertModel = "../models/Advert.model.js";
-// let ProductSchema = new Schema({
-//   productID: { type: Schema.Types.ObjectId, ref: "Advert" },
-//   title: {
-//     type: String,
-//   },
-//   amount: {
-//     type: String,
-//   },
-//   cost: {
-//     type: Number,
-//   },
-// });
 
 const cartSchema = new Schema(
   {
@@ -38,7 +26,6 @@ const cartSchema = new Schema(
         },
       },
     ],
-    // products: [ProductSchema],
     createdAt: {
       type: Date,
       default: Date.now,

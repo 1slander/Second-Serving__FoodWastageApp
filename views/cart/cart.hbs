@@ -16,6 +16,11 @@
           <td class="cart-item-name">{{this.title}}</td>
           <td class="cart-item-qty">{{this.amount}}</td>
           <td class="cart-item-price">{{this.cost}}</td>
+          <td>
+            <form action="/cart/{{this._id}}/delete" method="post">
+              <button type="submit">x</button>
+            </form>
+          </td>
         </tr>
       {{/each}}
     </tbody>
@@ -26,6 +31,11 @@
             £<span>{{price}}</span>
           </h2>
         </td>
+        {{!-- <td>
+          <form action="/cart/{{this._id}}/remove" method="post">
+            <button type="submit">Empty Cart</button>
+          </form>
+        </td> --}}
       </tr>
     </tfoot>
 
@@ -33,15 +43,3 @@
 {{else}}
   <p>Your cart is empty.</p>
 {{/if}}
-
-{{!-- {{#if items.length}}
-  <h2>Your Shopping Cart</h2>
-  <ul>
-    {{#each items}}
-      <li>{{this.name}} - {{this.price}}</li>
-    {{/each}}
-  </ul>
-  <p>Total: {{total}}</p>
-{{else}}
-  <p>Your cart is empty.</p>
-{{/if}} --}}

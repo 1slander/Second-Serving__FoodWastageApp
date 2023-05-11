@@ -56,4 +56,22 @@ router.post("/", async (req, res) => {
   }
 });
 
+//delete
+
+router.post("/:productId/delete", async (req, res) => {
+  const { productId } = req.params;
+  try {
+    // const deleteProduct = await CartModel.findOneAndDelete({
+    //   "products._id": productId,
+    // });
+    const deleteProduct = await CartModel.updateOne(
+      {},
+      { $pull: { products: { _id: productId } } }
+    );
+    res.redirect("/cart");
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 module.exports = router;
