@@ -22,7 +22,7 @@
       <small>Posted by <strong>{{creator}}</strong> on {{createdAt}}</small>
       {{! BUY BUTTON }}
       <form action="/cart" method="post">
-        <input type="text" name="id" value="{{_id}}" />
+        <input type="text" name="productId" value="{{_id}}" />
         <input type="hidden" name="title" value="{{title}}" />
         <input type="hidden" name="amount" value="{{amount}}" />
         <input type="hidden" name="cost" value="{{cost}}" />
