@@ -10,15 +10,16 @@ const AdvertModel = require("../models/Advert.model");
 router.get("/", async (req, res, next) => {
   // Get the user Id from the session
   const userId = req.session.currentUser._id;
-  console.log(userId);
   try {
     const userCart = await CartModel.findOne({ user: userId });
-    console.log(userCart);
+
     if (!userCart) {
-      res.send("You Cart is empty");
+      res.render("cart/cart.hbs");
     } else {
-      // res.render("cart/cart.hbs", userCart);
-      res.send("here is your cart");
+      res.render("cart/cart.hbs", {
+        userCart,
+        userInSession: req.session.currentUser,
+      });
     }
   } catch (err) {
     console.log(err);
@@ -29,16 +30,21 @@ router.get("/", async (req, res, next) => {
 
 router.post("/", async (req, res) => {
   const userId = req.session.currentUser._id;
-  let { id: productId, title, amount, cost } = req.body;
+  let { advert: productId, title, amount, cost } = req.body;
   try {
-    let userCart = await CartModel.findById(userId);
-    if (!userCart) {
-      userCart = await CartModel.create({
-        user: userId,
-        products: [{ productId, title, amount, cost }],
-      });
+    let cart = await CartModel.findOne({ user: userId });
+    console.log("This cart", cart);
+
+    if (cart) {
+      cart.products.push({ productId, title, amount, cost });
+      cart = await cart.save();
     } else {
-      userCart.products.push({ productId, title, amount, cost });
+      const newCart = await CartModel.create({
+        user: userId,
+        products: [
+          { advert: productId, title: title, amount: amount, cost: cost },
+        ],
+      });
     }
     res.redirect("/cart");
   } catch (error) {

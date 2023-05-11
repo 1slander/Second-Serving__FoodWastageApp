@@ -1,17 +1,17 @@
 const { Schema, model } = require("mongoose");
-
-let ProductSchema = new Schema({
-  products: [{ type: Schema.Types.ObjectId, ref: "Advert" }],
-  title: {
-    type: String,
-  },
-  amount: {
-    type: String,
-  },
-  cost: {
-    type: Number,
-  },
-});
+const AdvertModel = "../models/Advert.model.js";
+// let ProductSchema = new Schema({
+//   productID: { type: Schema.Types.ObjectId, ref: "Advert" },
+//   title: {
+//     type: String,
+//   },
+//   amount: {
+//     type: String,
+//   },
+//   cost: {
+//     type: Number,
+//   },
+// });
 
 const cartSchema = new Schema(
   {
@@ -20,8 +20,25 @@ const cartSchema = new Schema(
       required: true,
       ref: "User",
     },
-    // products: [{ type: Schema.Types.ObjectId, ref: "Advert" }],
-    products: [ProductSchema],
+    products: [
+      {
+        advert: {
+          type: Schema.Types.ObjectId,
+          ref: "AdvertModel",
+          // required: true,
+        },
+        title: {
+          type: String,
+        },
+        amount: {
+          type: String,
+        },
+        cost: {
+          type: Number,
+        },
+      },
+    ],
+    // products: [ProductSchema],
     createdAt: {
       type: Date,
       default: Date.now,
