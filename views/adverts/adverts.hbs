@@ -1,16 +1,16 @@
-<div class="card-advert">
+<div class="card-advert container gap-3">
   {{#each adverts}}
-    <div>
-      <img src="{{picture}}" alt="{{title}}" />
-      <div>
-        <h5>{{title}}</h5>
-        <p>{{description}}</p>
-        <p><strong>Amount:</strong> {{amount}}</p>
-        <p><strong>Cost:</strong> {{cost}}</p>
+    <div class="card col mb-4" style="width: 18rem">
+      <img src="{{picture}}" alt="{{title}}" class="card-img-top" />
+      <div class="card-body">
+        <h5 class="card-title">{{title}}</h5>
+        <p class="card-text">{{description}}</p>
+        <p class="card-text"><strong>Amount:</strong> {{amount}}</p>
+        <p class="card-text"><strong>Cost:</strong> {{cost}}</p>
         <a href="#" class="btn btn-primary">Contact seller</a>
         <a href="/adverts/{{_id}}" class="btn btn-success">Update</a>
         <form action="/adverts/{{_id}}/delete" method="POST">
-          <button type="submit">Delete</button>
+          <button class="btn btn-orange my-1" type="submit">Delete</button>
         </form>
       </div>
       <div>

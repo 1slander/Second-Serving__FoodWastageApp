@@ -1,31 +1,106 @@
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+
+            <div class="mb-md-5 mt-md-4 pb-5">
+
+
+
 <div id="form">
-  <h2>Sign Up</h2>
+  <h2 class="fw-bold mb-2 text-uppercase">Sign Up</h2>
   <form action="/signup" method="POST">
 
-    <label> Username:
-      <input type="text" name="username" placeholder="Your username" />
-    </label>
+  {{!-- <form action="/login" method="POST"> --}}
 
-    <label> Email:
-      <input type="email" name="email" placeholder="Your email" />
-    </label>
+ <label class="form-label" for="typeUsernameX">
+   Username
+   <input
+     type="text"
+     name="username"
+     placeholder="Your username"
+     id="typeUsernameX"
+     class="form-control form-control-lg"
+   />
+ </label>
 
-    <label> Password:
-      <input type="password" name="password" placeholder="Your password" />
-    </label>
-    <br>
-    <label> Address:
-      <input type="text" name="address" placeholder="Adress" />
-      <input type="text" name="city" placeholder="city" />
-      <input type="text" name="postcode" placeholder="postcode" />
-      <input type="text" name="country" placeholder="country" />
-    </label>
+    
 
-    <button type="submit">Sign Up</button>
+    
+ <label class="form-label" for="typeEmailX">
+   Email
+   <input
+     type="email"
+     name="email"
+     placeholder="Your email"
+     id="typeEmailX"
+     class="form-control form-control-lg"
+   />
+ </label>
 
+ <label class="form-label" for="typePasswordX">
+  Password
+  <input
+    type="password"
+    name="password"
+    placeholder="Your password"
+    id="typePasswordX"
+    class="form-control form-control-lg"
+  />
+</label>
+    <br />
+    <label class="form-label" for="typeAddressX">
+                  Address
+                  <input
+                    type="City"
+                    name="City"
+                    placeholder="City"
+                    id="typeAddressX"
+                    class="form-control form-control-lg"
+                  />
+                </label>
+
+                  <label class="form-label" for="typeAddressX">
+                  <input
+                    type="street+housenumber"
+                    name="street+housenumber"
+                    placeholder="Street + House number"
+                    id="typeAddressX"
+                    class="form-control form-control-lg"
+                  />
+                </label>
+                  
+                  <label class="form-label" for="typeAddressX">
+                  <input
+                    type="postcode"
+                    name="postcode"
+                    placeholder="PostCode"
+                    id="typeAddressX"
+                    class="form-control form-control-lg"
+                  />
+                </label>
+
+                  <label class="form-label" for="typeAddressX">
+                  <input
+                    type="country"
+                    name="country"
+                    placeholder="Country"
+                    id="typeAddressX"
+                    class="form-control form-control-lg"
+                  />
+                </label>
+
+    <button class="btn btn-outline-light btn-lg px-5" type="submit">
+       Sign Up
+     </button>
 
     {{#if errorMessage}}
       <p class="error">{{errorMessage}}</p>
     {{/if}}
   </form>
 </div>
+
+{{! Template }}
+

@@ -51,3 +51,9 @@ h1 {
   border: 1px solid black;
   margin: 1em;
 }
+
+/* BUTTONS */
+
+.btn-orange {
+  background-color: orange !important;
+}
