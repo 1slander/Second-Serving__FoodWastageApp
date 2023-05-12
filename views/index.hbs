@@ -2,9 +2,74 @@
 <p>Welcome Ironhacker!</p>
 
 {{#if userInSession}}
-<a href="/userProfile">Profile</a>
-<a href="#">Adverts</a>
+  <a href="/userProfile">Profile</a>
+  <a href="#">Adverts</a>
 {{else}}
-<a href="/signup">sign up</a>
-<a href="/login">login</a>
+  <a href="#" class="open-button" id="signup">sign up</a>
+  <dialog class="modal" id="signup">
+    <div id="form">
+      <h2>Sign Up</h2>
+      <form action="/signup" method="POST">
+
+        <label>
+          Username:
+          <input type="text" name="username" placeholder="Your username" />
+        </label>
+
+        <label>
+          Email:
+          <input type="email" name="email" placeholder="Your email" />
+        </label>
+
+        <label>
+          Password:
+          <input type="password" name="password" placeholder="Your password" />
+        </label>
+        <br />
+        <label>
+          Address:
+          <input type="text" name="address" placeholder="Adress" />
+          <input type="text" name="city" placeholder="city" />
+          <input type="text" name="postcode" placeholder="postcode" />
+          <input type="text" name="country" placeholder="country" />
+        </label>
+
+        <button type="submit">Sign Up</button>
+
+        {{#if errorMessage}}
+          <p class="error">{{errorMessage}}</p>
+        {{/if}}
+      </form>
+    </div>
+  </dialog>
+
+  <a href="#" class="open-button" id="login">login</a>
+  <dialog class="modal" id="login">
+    <div id="login-form">
+      <h2>Log In</h2>
+      <form action="/login" method="POST">
+
+        <label>
+          Username
+          <input type="text" name="username" placeholder="Your username" />
+        </label>
+
+        <label>
+          Email
+          <input type="email" name="email" placeholder="Your email" />
+        </label>
+
+        <label>
+          Password
+          <input type="password" name="password" placeholder="Your password" />
+        </label>
+
+        <button type="submit">Log In</button>
+
+        {{#if errorMessage}}
+          <p class="error">{{errorMessage}}</p>
+        {{/if}}
+      </form>
+    </div>
+  </dialog>
 {{/if}}

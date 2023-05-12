@@ -1,11 +1,30 @@
-
 <h1>Welcome, {{userInSession.username}}</h1>
-<a href="/adverts/new">Create advert</a>
+<a href="#" class="open-button" id="addAdvert">Add Advert</a>
 <a href="/adverts">See adverts</a>
 <a href="/cart">Cart</a>
 <a href="/messages">Messages</a>
 {{!-- <form id="logout-form" action="/logout" method="POST">
  <button>Logout</button> --}}
 </form>
+<dialog class="modal" id="addAdvert">
+  <form action="/adverts/adverts" method="POST">
+    <label for="title">Title
+      <input type="text" name="title" required />
+    </label>
 
+    <label for="amount">Amount
+      <input type="text" name="amount" required />
+    </label>
 
+    <label for="description">Description
+      <textarea name="description" required></textarea>
+    </label>
+
+    <label for="cost">Cost
+      <input type="number" name="cost" />
+    </label>
+
+    <button type="submit">Post Advert</button>
+
+  </form>
+</dialog>
