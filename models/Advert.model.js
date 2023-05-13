@@ -23,6 +23,9 @@ const adSchema = new mongoose.Schema({
   cost: {
     type: Number,
   },
+  imageUrl: {
+    type: String,
+  },
   createdAt: {
     type: Date,
     default: Date.now,

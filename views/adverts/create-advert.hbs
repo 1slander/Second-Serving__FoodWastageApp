@@ -1,4 +1,4 @@
-<form action="/adverts/adverts" method="POST">
+<form action="/adverts/adverts" method="POST" enctype="multipart/form-data">
   <label for="title">Title
     <input type="text" name="title" required />
   </label>
@@ -13,6 +13,10 @@
 
   <label for="cost">Cost
     <input type="number" name="cost" />
+  </label>
+
+  <label for="imageUrl">Upload Image:
+    <input type="file" name="imageUrl" required />
   </label>
 
   <button type="submit">Post Advert</button>
