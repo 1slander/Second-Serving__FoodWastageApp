@@ -8,7 +8,7 @@ const openModal = document.querySelectorAll(`.open-button`);
 const closeModal = document.querySelectorAll(`.close-button`);
 console.log(openModal)
 
-//open Modal
+//Open Modal
 openModal.forEach((button) => {
   button.addEventListener(`click`, (e) => {
     const buttonId = e.target.getAttribute("id");
