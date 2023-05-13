@@ -8,10 +8,12 @@
         <p class="card-text"><strong>Amount:</strong> {{amount}}</p>
         <p class="card-text"><strong>Cost:</strong> {{cost}}</p>
         <a href="#" class="btn btn-primary">Contact seller</a>
-        <a href="/adverts/{{_id}}" class="btn btn-success">Update</a>
-        <form action="/adverts/{{_id}}/delete" method="POST">
-          <button class="btn btn-orange my-1" type="submit">Delete</button>
-        </form>
+        {{#if userInSession}}
+          <a href="/adverts/{{_id}}" class="btn btn-success">Update</a>
+          <form action="/adverts/{{_id}}/delete" method="POST">
+            <button class="btn btn-orange my-1" type="submit">Delete</button>
+          </form>
+        {{/if}}
       </div>
     </div>
     <dialog class="modal" id="{{@index}}">
