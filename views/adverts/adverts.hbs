@@ -21,7 +21,18 @@
       <p><strong>Cost:</strong> {{cost}}</p>
       <a href="#" class="btn btn-primary">Contact seller</a>
       <p>Details</p>
+
       <small>Posted by <strong>{{creator}}</strong> on {{createdAt}}</small>
+      {{! BUY BUTTON }}
+      <form action="/cart" method="post">
+        <input type="hidden" name="productId" value="{{_id}}" />
+        <input type="hidden" name="title" value="{{title}}" />
+        <input type="hidden" name="amount" value="{{amount}}" />
+        <input type="hidden" name="cost" value="{{cost}}" />
+
+        <button type="submit">Buy</button>
+      </form>
+      {{! CLOSE BUTTON }}
       <button class="close-button">Close</button>
     </dialog>
   {{/each}}
