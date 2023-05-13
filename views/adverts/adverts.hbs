@@ -13,9 +13,16 @@
           <button class="btn btn-orange my-1" type="submit">Delete</button>
         </form>
       </div>
-      <div>
-        <small>Posted by <strong>{{creator}}</strong> on {{createdAt}}</small>
-      </div>
     </div>
+    <dialog class="modal" id="{{@index}}">
+      <h2>{{title}}</h2>
+      <p>{{description}}</p>
+      <p><strong>Amount:</strong> {{amount}}</p>
+      <p><strong>Cost:</strong> {{cost}}</p>
+      <a href="#" class="btn btn-primary">Contact seller</a>
+      <p>Details</p>
+      <small>Posted by <strong>{{creator}}</strong> on {{createdAt}}</small>
+      <button class="close-button">Close</button>
+    </dialog>
   {{/each}}
 </div>
