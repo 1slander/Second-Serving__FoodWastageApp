@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
 const modal = document.querySelectorAll(`.modal`);
 const openModal = document.querySelectorAll(`.open-button`);
 const closeModal = document.querySelectorAll(`.close-button`);
+console.log(openModal)
 
 //open Modal
 openModal.forEach((button) => {
@@ -13,6 +14,7 @@ openModal.forEach((button) => {
     const buttonId = e.target.getAttribute("id");
     const rightModal = [...modal].filter((el) => {
       const modalId = el.getAttribute("id");
+      console.log(modalId)
       return buttonId === modalId;
     });
     rightModal[0].showModal();

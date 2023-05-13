@@ -8,6 +8,7 @@
         <p class="card-text"><strong>Amount:</strong> {{amount}}</p>
         <p class="card-text"><strong>Cost:</strong> {{cost}}</p>
         <a href="#" class="btn btn-primary">Contact seller</a>
+        <button class="open-button" id="{{@index}}">Details</button>
         {{#if userInSession}}
           <a href="/adverts/{{_id}}" class="btn btn-success">Update</a>
           <form action="/adverts/{{_id}}/delete" method="POST">
