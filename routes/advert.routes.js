@@ -3,30 +3,41 @@ const router = express.Router();
 const AdvertModel = require("../models/Advert.model");
 const UserModel = require("../models/User.model");
 
+// File Uploader
+
+const fileUploader = require("../config/cloudinary.config.js");
+
 //auth middleware
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
 
 // Create a new advert
-router.post("/adverts", isLoggedIn, async (req, res) => {
-  const { title, amount, description, cost } = req.body;
-  const senderSession = req.session.currentUser;
-  console.log(senderSession);
-  try {
-    const newAdvert = await AdvertModel.create({
-      title,
-      amount,
-      sender: req.session.currentUser._id,
-      creator: req.session.currentUser.username,
-      description,
-      cost,
-    });
-    res.redirect("/userProfile");
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Server Error");
+router.post(
+  "/adverts",
+  isLoggedIn,
+  fileUploader.single("imageUrl"),
+  async (req, res) => {
+    const { title, amount, description, cost } = req.body;
+    const senderSession = req.session.currentUser;
+    const image = req.file.path;
+    console.log(image);
+    try {
+      const newAdvert = await AdvertModel.create({
+        title,
+        amount,
+        sender: req.session.currentUser._id,
+        creator: req.session.currentUser.username,
+        description,
+        cost,
+        imageUrl: image,
+      });
+      res.redirect("/userProfile");
+    } catch (error) {
+      console.error(error);
+      res.status(500).send("Server Error");
+    }
   }
-});
+);
 
 //Create a new advert page
 router.get("/new", isLoggedIn, (req, res) => {
@@ -88,10 +99,10 @@ router.post("/:id", async (req, res) => {
 });
 
 // Delete an advert
-router.post("/:id/delete", async (req, res) => {
+router.post("/:id/delete", isLoggedIn, async (req, res) => {
   const { id } = req.params;
   //We add _ _
-  const sender = req.session.currentUser.__id;
+  const sender = req.session.currentUser._id;
 
   try {
     const advert = await AdvertModel.findById(id);
