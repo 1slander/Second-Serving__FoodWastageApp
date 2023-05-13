@@ -3,10 +3,18 @@
 *::after {
   box-sizing: content-box;
   margin: 0;
+  padding: 0;
 }
 
 :root {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Roboto";
+  --bg-header: #056365;
+  --bg-header2: #236042;
+  --bg-section: #f5fcfb;
+  --bg-section2: #fefff8;
+  --text-color: #08415c;
+  --text-color2: #171215;
+  --text-white: #fefff8;
 }
 
 body {
@@ -26,15 +34,16 @@ a:focus {
 }
 
 h1 {
-  font-size: 2.5rem;
+  /* font-size: 2.5rem; */
 }
 
 /* NAVBAR */
 
 .navbar {
   display: flex;
-  justify-content: end;
-  margin: 1em;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .navbar-menu {
@@ -43,6 +52,9 @@ h1 {
   display: flex;
   flex-direction: row;
   gap: 1em;
+}
+.logo {
+  width: 10%;
 }
 
 /* ADVERTS CARD */
@@ -56,4 +68,16 @@ dialog {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.bg-header {
+  background-color: var(--bg-header2);
+}
+
+.bg-section {
+  background-color: var(--bg-section2);
+}
+
+.text-color {
+  color: var(--text-color);
 }

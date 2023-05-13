@@ -1,11 +1,17 @@
-<h1>{{appTitle}} 🚀</h1>
-<p>Welcome Ironhacker!</p>
+<nav class="navbar bg-header py-7 px-4 text-white gap-3">
+  <img src="/images/logo.png" alt="logo" class="logo" />
+  <div class="">
+    <a href="#" class="open-button mr-3" id="signup">sign up</a>
+    <a href="#" class="open-button mr-3" id="login">login</a>
+
+  </div>
+</nav>
 
 {{#if userInSession}}
   <a href="/userProfile">Profile</a>
   <a href="#">Adverts</a>
 {{else}}
-  <a href="#" class="open-button" id="signup">sign up</a>
+
   <dialog class="modal" id="signup">
     <div id="form">
       <h2>Sign Up</h2>
@@ -35,6 +41,7 @@
         </label>
 
         <button type="submit">Sign Up</button>
+        <button class="close-button">Close</button>
 
         {{#if errorMessage}}
           <p class="error">{{errorMessage}}</p>
@@ -43,7 +50,6 @@
     </div>
   </dialog>
 
-  <a href="#" class="open-button" id="login">login</a>
   <dialog class="modal" id="login">
     <div id="login-form">
       <h2>Log In</h2>
@@ -65,6 +71,7 @@
         </label>
 
         <button type="submit">Log In</button>
+        <button type="submit" class="close-button">Close</button>
 
         {{#if errorMessage}}
           <p class="error">{{errorMessage}}</p>
@@ -73,3 +80,22 @@
     </div>
   </dialog>
 {{/if}}
+<main>
+  <section
+    class="bg-section flex flex-col md:flex-col items-center justify-center lg:flex-row w-full py-6"
+  >
+    <div class="text-center md:2/5 lg:w-2/4 xl:w-2/4 py-6">
+      <h1
+        class="text-5xl md:mr-4 lg:text-6xl lg:mr-4 text-color font-bold mb-3"
+      >Give Food A
+        <span class="border-b-2 border-current">Second</span>
+        Home</h1>
+      <p class="text-color uppercase text-base">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+      </p>
+    </div>
+    <div class="py-6 md:w-3/5 lg:w-2/5 xl:w-1/4">
+      <img class="rounded" src="/images/title_img1.jpg" alt="People cooking" />
+    </div>
+  </section>
+</main>
