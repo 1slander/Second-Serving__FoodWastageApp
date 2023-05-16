@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Message = require("../models/Message.model");
 const User = require("../models/User.model");
+const Advert = require("../models/Advert.model.js");
 
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
@@ -91,6 +92,38 @@ router.post("/:messageId/reply", async (req, res) => {
     res.redirect("/messages");
   } catch (err) {
     console.log(err);
+  }
+});
+
+// CONTACT
+
+router.get("/contact/:advertId", async (req, res) => {
+  const { advertId } = req.params;
+  try {
+    const findAdvert = await Advert.findById(advertId);
+    console.log(findAdvert);
+    res.render("messages/contact.hbs", findAdvert);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+router.post("/contact/:advertId", async (req, res) => {
+  try {
+    const { recipient, message, subject } = req.body;
+    const getUser = await User.findOne({ username: recipient });
+
+    const newMessage = new Message({
+      sender: req.session.currentUser._id,
+      recipient: getUser._id,
+      message: message,
+      subject: subject,
+    });
+    const saveMessageDb = await newMessage.save();
+
+    res.redirect("/adverts");
+  } catch (error) {
+    console.log(error);
   }
 });
 

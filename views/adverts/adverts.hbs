@@ -44,14 +44,14 @@
               <input type="hidden" name="title" value="{{title}}" />
               <input type="hidden" name="amount" value="{{amount}}" />
               <input type="hidden" name="cost" value="{{cost}}" />
-              <button type="submit" class="btn btn-primary">Add to Cart</button>
-              <a href="#" class="btn btn-secondary">Contact Seller</a>
+              <button type="submit" class="btn btn-primary bg-blue-500 text-white py-2 px-4 rounded uppercase hover:bg-blue-700 font-bold ">Add to Cart</button>
+              <a href="/contact/{{_id}}" class="btn btn-secondary">Contact Seller</a>
           </div>
           <small class="text-gray-700">Posted by
             <strong>{{creator}}</strong>
             on
             {{createdAt}}</small>
-<button type="button" class="close-button bg-gray-300 text-gray-700 py-2 px-4 rounded">Close</button>
+<button type="button" class="close-button bg-gray-300 text-gray-700 py-2 px-4 rounded hover:bg-gray-600 hover:text-white">Close</button>
         </div>
       </div>
     </dialog>

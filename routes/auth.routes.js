@@ -79,7 +79,7 @@ router.post("/signup", isLoggedOut, (req, res, next) => {
       });
     })
     .then((user) => {
-      res.redirect("/login");
+      res.redirect("/");
     })
     .catch((error) => {
       if (error instanceof mongoose.Error.ValidationError) {
@@ -149,7 +149,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
           // Remove the password field
           delete req.session.currentUser.password;
 
-          res.redirect("/userProfile");
+          res.redirect("/adverts");
         })
         .catch((err) => next(err)); // In this case, we send error handling to the error handling middleware.
     })
