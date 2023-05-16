@@ -10,6 +10,7 @@
   font-family: "Roboto";
   --bg-header: #056365;
   --bg-header2: #236042;
+  --bg-header-dk: #153a28;
   --bg-section: #f5fcfb;
   --bg-section2: #fefff8;
   --text-color: #08415c;
@@ -30,7 +31,7 @@ a {
 
 a:hover,
 a:focus {
-  color: blue;
+  color: rgba(251, 191, 36);
 }
 
 h1 {
@@ -68,10 +69,30 @@ dialog {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  background-color: var(--bg-header2);
+  border: 2px solid var(--bg-section2);
+  padding: 1.5em 2em;
+  color: var(--text-white);
+}
+
+.login-form,
+.signup-form {
+  display: flex;
+  flex-direction: column;
+}
+.signup-btns {
+  display: flex;
+  justify-content: center;
+  margin-top: 2em;
+  color: var(--bg-header2);
 }
 
 .bg-header {
   background-color: var(--bg-header2);
+}
+
+.bg-header-dk {
+  background-color: var(--bg-header-dk);
 }
 
 .bg-section {

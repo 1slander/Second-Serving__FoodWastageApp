@@ -13,35 +13,38 @@
 {{else}}
 
   <dialog class="modal" id="signup">
-    <div id="form">
-      <h2>Sign Up</h2>
+    <div id="form" class="signup-form">
+      <h2 class="text-lg font-bold mb-3 ">Sign Up:</h2>
       <form action="/signup" method="POST">
 
-        <label>
+        <label class="font-bold ">
           Username:
-          <input type="text" name="username" placeholder="Your username" />
+          <input class="border-2 px-2 my-2 w-full text-black" type="text" name="username" placeholder="Your username" />
         </label>
 
-        <label>
+        <label class="font-bold ">
           Email:
-          <input type="email" name="email" placeholder="Your email" />
+          <input class="border-2 px-2 mb-2 w-full text-black"  type="email" name="email" placeholder="Your email" />
         </label>
-
-        <label>
+        
+        <label class="font-bold ">
           Password:
-          <input type="password" name="password" placeholder="Your password" />
+          <input class="border-2 px-2 mb-2 w-full text-black"  type="password" name="password" placeholder="Your password" />
         </label>
-        <br />
-        <label>
+        
+        <label class="font-bold ">
           Address:
-          <input type="text" name="address" placeholder="Adress" />
-          <input type="text" name="city" placeholder="city" />
-          <input type="text" name="postcode" placeholder="postcode" />
-          <input type="text" name="country" placeholder="country" />
+          <input class="border-2 px-2 mb-2 w-full text-black"  type="text" name="address" placeholder="Address" />
+          <input class="border-2 px-2 mb-2 w-full text-black"  type="text" name="city" placeholder="city" />
+          <input class="border-2 px-2 mb-2 w-full text-black"  type="text" name="postcode" placeholder="postcode" />
+          <input class="border-2 px-2 mb-2 w-full" type="text" name="country" placeholder="country" />
         </label>
+  
+        <div class="signup-btns gap-2">
+        <button class="bg-section px-3 py-1 font-bold uppercase hover:bg-gray-400 hover:text-white" type="submit">Sign Up</button>
+        <button class="close-button bg-section px-3 py-1 font-bold uppercase hover:bg-gray-400 hover:text-white">Close</button>
 
-        <button type="submit">Sign Up</button>
-        <button class="close-button">Close</button>
+        </div>
 
         {{#if errorMessage}}
           <p class="error">{{errorMessage}}</p>
@@ -51,8 +54,8 @@
   </dialog>
 
   <dialog class="modal" id="login">
-    <div id="login-form">
-      <h2>Log In</h2>
+    <div id="login-form" class="login-form">
+      <h2 class='text-lg font-bold mb-3' >Log In</h2>
       <form action="/login" method="POST">
 
         <label>
@@ -162,3 +165,13 @@
   </div>
 
 </section>
+
+
+<footer class="bg-header-dk py-5 text-center text-white">
+  <div>
+     <small>&copy; SecondServing - {{currentYear}} by: <a class="px-2 " href="https://github.com/denyejorak">Karoly</a>
+     <a class="pr-2 " href="https://github.com/KarliChristensen">Karli</a>& 
+     <a class="px-2 " href="https://github.com/1slander">Hector</a>for Ironhack 2023.</small> 
+  </div>
+
+</footer>
