@@ -1,4 +1,5 @@
 <nav class="navbar bg-header py-7 px-4 text-white gap-3">
+  <img src="/images/logo.png" alt="logo" class="logo" />
   <ul class="navbar-menu">
     <li><a href="/userProfile">profile</a></li>
     <li><a href="/cart">cart</a></li>
@@ -8,29 +9,48 @@
     <li>
 
       <form id="logout-form" action="/logout" method="POST">
-        <button>Logout</button>
+        <button class="font-bold text-gray-300">Logout</button>
       </form>
     </li>
   </ul>
 </nav>
 
 <dialog class="modal" id="addAdvert">
-  <form action="/adverts/adverts" method="POST" enctype="multipart/form-data" class="p-4">
+  <form
+    action="/adverts/adverts"
+    method="POST"
+    enctype="multipart/form-data"
+    class="p-4"
+  >
     <h2 class="text-2xl mb-4" style="color: #08415c;">Add Advert</h2>
 
     <label for="title" class="flex flex-col">
       <span class="text-sm mb-1" style="color: #08415c;">Title:</span>
-      <input type="text" name="title" required class="border rounded py-2 px-3" />
+      <input
+        type="text"
+        name="title"
+        required
+        class="border rounded py-2 px-3"
+      />
     </label>
 
     <label for="amount" class="flex flex-col">
       <span class="text-sm mb-1" style="color: #08415c;">Amount:</span>
-      <input type="text" name="amount" required class="border rounded py-2 px-3" />
+      <input
+        type="text"
+        name="amount"
+        required
+        class="border rounded py-2 px-3"
+      />
     </label>
 
     <label for="description" class="flex flex-col">
       <span class="text-sm mb-1" style="color: #08415c;">Description:</span>
-      <textarea name="description" required class="border rounded py-2 px-3"></textarea>
+      <textarea
+        name="description"
+        required
+        class="border rounded py-2 px-3"
+      ></textarea>
     </label>
 
     <label for="cost" class="flex flex-col">
@@ -44,8 +64,14 @@
     </label>
 
     <div class="flex flex-col gap-3 mb-1">
-      <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded">Post Advert</button>
-      <button type="button" class="close-button bg-gray-300 text-gray-700 py-2 px-4 rounded">Close</button>
+      <button
+        type="submit"
+        class="bg-blue-500 text-white py-2 px-4 rounded"
+      >Post Advert</button>
+      <button
+        type="button"
+        class="close-button bg-gray-300 text-gray-700 py-2 px-4 rounded"
+      >Close</button>
     </div>
   </form>
 </dialog>
