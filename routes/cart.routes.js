@@ -60,6 +60,7 @@ router.post("/", async (req, res) => {
 
 router.post("/:productId/delete", async (req, res) => {
   const { productId } = req.params;
+
   try {
     // const deleteProduct = await CartModel.findOneAndDelete({
     //   "products._id": productId,
@@ -68,6 +69,32 @@ router.post("/:productId/delete", async (req, res) => {
       {},
       { $pull: { products: { _id: productId } } }
     );
+
+    res.redirect("/cart");
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+// CHECKOUT
+
+router.post("/checkout", async (req, res) => {
+  const userId = req.session.currentUser._id;
+  const products = req.body;
+
+  try {
+    if (products.length > 1) {
+      for (const product of products) {
+        let deleteProduct = await AdvertModel.findOne({ item: product });
+        console.log("This Product", deleteProduct);
+      }
+      const userCart = await CartModel.findOne({ user: userId });
+    } else if (products.length === 1) {
+      const deleteProduct = await AdvertModel.findOne({ item: products[0] });
+      console.log("1 product delete", deleteProduct);
+      const userCart = await CartModel.findOne({ user: userId });
+      console.log("cart delete");
+    }
     res.redirect("/cart");
   } catch (error) {
     console.log(error);
@@ -75,3 +102,22 @@ router.post("/:productId/delete", async (req, res) => {
 });
 
 module.exports = router;
+
+// try {
+//   if (products.length > 1) {
+//     products.forEach(async (product) => {
+//       let deleteProducts = await AdvertModel.findByIdAndDelete(product);
+//       console.log(product);
+//     });
+//     const userCart = await CartModel.findByIdAndDelete(userId);
+//     console.log("cart delete");
+//   } else if (products === 1) {
+//     const deleteProducts = await AdvertModel.findByIdAndDelete(products);
+//     console.log("1 product delete");
+//     const userCart = await CartModel.findByIdAndDelete(userId);
+//     console.log("cart delete");
+//   }
+//   res.redirect("/adverts");
+// } catch (error) {
+//   console.log(error);
+// }

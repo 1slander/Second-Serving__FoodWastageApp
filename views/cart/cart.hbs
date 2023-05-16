@@ -31,11 +31,14 @@
             £<span>{{price}}</span>
           </h2>
         </td>
-        {{!-- <td>
-          <form action="/cart/{{this._id}}/remove" method="post">
-            <button type="submit">Empty Cart</button>
+        <td>
+          <form action="/cart/checkout" method="post">
+            {{#each userCart.products}}
+              <input type="hidden" name="productId" value="{{_id}}" />
+            {{/each}}
+            <button type="submit">Checkout</button>
           </form>
-        </td> --}}
+        </td>
       </tr>
     </tfoot>
 
