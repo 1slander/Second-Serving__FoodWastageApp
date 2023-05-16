@@ -1,6 +1,6 @@
-<nav class="navbar bg-header py-7 px-4 text-white gap-3">
+<nav class="navbar bg-header py-5 px-4 text-white gap-3">
   <img src="/images/logo.png" alt="logo" class="logo" />
-  <ul class="navbar-menu">
+  <ul class="navbar-menu flex items-center text-sm md:text-lg">
     <li><a href="/userProfile">profile</a></li>
     <li><a href="/cart">cart</a></li>
     <li><a href="/adverts">adverts</a></li>
@@ -9,7 +9,9 @@
     <li>
 
       <form id="logout-form" action="/logout" method="POST">
-        <button class="font-bold text-gray-300">Logout</button>
+        <button
+          class="font-bold bg-yellow-400 px-2 py-1 rounded text-white hover:text-grey-400 hover:bg-yellow-600"
+        >Logout</button>
       </form>
     </li>
   </ul>
