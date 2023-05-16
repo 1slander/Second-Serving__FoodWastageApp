@@ -13,72 +13,147 @@
 {{else}}
 
   <dialog class="modal" id="signup">
-    <div id="form">
-      <h2>Sign Up</h2>
-      <form action="/signup" method="POST">
+    <div id="form" class="p-4">
+      <h2 class="text-2xl mb-4">Sign Up</h2>
+      <form action="/signup" method="POST" class="flex flex-col space-y-4">
 
-        <label>
-          Username:
-          <input type="text" name="username" placeholder="Your username" />
+        <label class="flex flex-col">
+          <span class="text-sm mb-1">Username:</span>
+          <input
+            type="text"
+            name="username"
+            placeholder="Your username"
+            class="border rounded py-2 px-3"
+          />
         </label>
 
-        <label>
-          Email:
-          <input type="email" name="email" placeholder="Your email" />
+        <label class="flex flex-col">
+          <span class="text-sm mb-1">Email:</span>
+          <input
+            type="email"
+            name="email"
+            placeholder="Your email"
+            class="border rounded py-2 px-3"
+          />
         </label>
 
-        <label>
-          Password:
-          <input type="password" name="password" placeholder="Your password" />
-        </label>
-        <br />
-        <label>
-          Address:
-          <input type="text" name="address" placeholder="Adress" />
-          <input type="text" name="city" placeholder="city" />
-          <input type="text" name="postcode" placeholder="postcode" />
-          <input type="text" name="country" placeholder="country" />
+        <label class="flex flex-col">
+          <span class="text-sm mb-1">Password:</span>
+          <input
+            type="password"
+            name="password"
+            placeholder="Your password"
+            class="border rounded py-2 px-3"
+          />
         </label>
 
-        <button type="submit">Sign Up</button>
-        <button class="close-button">Close</button>
+        <label class="flex flex-col">
+          <span class="text-sm mb-1">Address:</span>
+          <input
+            type="text"
+            name="address"
+            placeholder="Address"
+            class="border rounded py-2 px-3"
+          />
+        </label>
+
+        <label class="flex flex-col">
+          <span class="text-sm mb-1">City:</span>
+          <input
+            type="text"
+            name="city"
+            placeholder="City"
+            class="border rounded py-2 px-3"
+          />
+        </label>
+
+        <label class="flex flex-col">
+          <span class="text-sm mb-1">Postcode:</span>
+          <input
+            type="text"
+            name="postcode"
+            placeholder="Postcode"
+            class="border rounded py-2 px-3"
+          />
+        </label>
+
+        <label class="flex flex-col">
+          <span class="text-sm mb-1">Country:</span>
+          <input
+            type="text"
+            name="country"
+            placeholder="Country"
+            class="border rounded py-2 px-3"
+          />
+        </label>
+
+        <button
+          type="submit"
+          class="bg-blue-500 text-white py-2 px-4 rounded"
+        >Sign Up</button>
+        <button
+          type="button"
+          class="close-button bg-gray-300 text-gray-700 py-2 px-4 rounded"
+        >Close</button>
 
         {{#if errorMessage}}
-          <p class="error">{{errorMessage}}</p>
+          <p class="error mt-4">{{errorMessage}}</p>
         {{/if}}
       </form>
     </div>
   </dialog>
 
   <dialog class="modal" id="login">
-    <div id="login-form">
-      <h2>Log In</h2>
-      <form action="/login" method="POST">
+    <div id="login-form" class="p-4">
+      <h2 class="text-2xl mb-4" style="color: #08415c;">Log In</h2>
+      <form action="/login" method="POST" class="flex flex-col space-y-4">
 
-        <label>
-          Username
-          <input type="text" name="username" placeholder="Your username" />
+        <label class="flex flex-col">
+          <span class="text-sm mb-1" style="color: #08415c;">Username:</span>
+          <input
+            type="text"
+            name="username"
+            placeholder="Your username"
+            class="border rounded py-2 px-3"
+          />
         </label>
 
-        <label>
-          Email
-          <input type="email" name="email" placeholder="Your email" />
+        <label class="flex flex-col">
+          <span class="text-sm mb-1" style="color: #08415c;">Email:</span>
+          <input
+            type="email"
+            name="email"
+            placeholder="Your email"
+            class="border rounded py-2 px-3"
+          />
         </label>
 
-        <label>
-          Password
-          <input type="password" name="password" placeholder="Your password" />
+        <label class="flex flex-col">
+          <span class="text-sm mb-1" style="color: #08415c;">Password:</span>
+          <input
+            type="password"
+            name="password"
+            placeholder="Your password"
+            class="border rounded py-2 px-3"
+          />
         </label>
 
-        <button type="submit">Log In</button>
-        <button type="submit" class="close-button">Close</button>
+        <button
+          type="submit"
+          class="bg-blue-500 text-white py-2 px-4 rounded"
+        >Log In</button>
+        <button
+          type="button"
+          class="close-button bg-gray-300 text-gray-700 py-2 px-4 rounded"
+        >Close</button>
 
         {{#if errorMessage}}
-          <p class="error">{{errorMessage}}</p>
+          <p class="error mt-4" style="color: #08415c;">{{errorMessage}}</p>
         {{/if}}
       </form>
     </div>
   </dialog>
+
 {{/if}}
 <main>
   <section

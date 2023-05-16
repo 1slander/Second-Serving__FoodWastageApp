@@ -3,11 +3,11 @@
 <a href="/adverts">See adverts</a>
 <a href="/cart">Cart</a>
 <a href="/messages">Messages</a>
-{{!-- <form id="logout-form" action="/logout" method="POST">
- <button>Logout</button> --}}
-</form>
+{{! <form id="logout-form" action="/logout" method="POST">
+ <button>Logout</button> }}
+
 <dialog class="modal" id="addAdvert">
-  <form action="/adverts/adverts" method="POST">
+  <form action="/adverts/adverts" method="POST" enctype="multipart/form-data">
     <label for="title">Title
       <input type="text" name="title" required />
     </label>
@@ -24,7 +24,11 @@
       <input type="number" name="cost" />
     </label>
 
-    <button type="submit">Post Advert</button>
+    <label for="imageUrl">Upload Image:
+      <input type="file" name="imageUrl" required />
+    </label>
 
+    <button type="submit">Post Advert</button>
   </form>
+  
 </dialog>
