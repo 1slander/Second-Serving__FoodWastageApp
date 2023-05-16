@@ -1,7 +1,13 @@
 <div class="card-advert">
   {{#each adverts}}
-    <div class="card-advert-info">
-      <img src="{{imageUrl}}" alt="{{title}}" />
+    <div class="card-advert-info open-button" id="{{@index}}">
+      <a href="/adverts/{{_id}}">
+        <img
+          src="{{imageUrl}}"
+          alt="{{title}}"
+          class="transition duration-300 ease-in-out hover:opacity-75"
+        />
+      </a>
       <div>
         <h5>{{title}}</h5>
         <button class="open-button" id="{{@index}}">Details</button>
@@ -11,26 +17,44 @@
         </form>
       </div>
     </div>
+
     <dialog class="modal" id="{{@index}}">
-      <h2>{{title}}</h2>
-      <p>{{description}}</p>
-      <p><strong>Amount:</strong> {{amount}}</p>
-      <p><strong>Cost:</strong> {{cost}}</p>
-      <a href="#" class="btn btn-primary">Contact seller</a>
-      <p>Details</p>
+      <div class="modal-background">
+        <img
+          src="{{imageUrl}}"
+          alt="Advert Image"
+          class="object-cover w-full h-full"
+        />
+      </div>
+      <div class="modal-content bg-gray-200 p-4">
+        <h2
+          class="text-2xl mb-4 absolute top-0 left-0 ml-4 mt-4"
+          style="color: #08415c;"
+        >{{title}}</h2>
+        <div class="relative">
+          <p>{{description}}</p>
+          <div class="mt-4">
+            <p><strong>Amount:</strong> {{amount}}</p>
+            <p><strong>Cost:</strong> {{cost}}</p>
+          </div>
+          <div class="mt-4">
 
-      <small>Posted by <strong>{{creator}}</strong> on {{createdAt}}</small>
-      {{! BUY BUTTON }}
-      <form action="/cart" method="post">
-        <input type="hidden" name="productId" value="{{_id}}" />
-        <input type="hidden" name="title" value="{{title}}" />
-        <input type="hidden" name="amount" value="{{amount}}" />
-        <input type="hidden" name="cost" value="{{cost}}" />
-
-        <button type="submit">Buy</button>
-      </form>
-      {{! CLOSE BUTTON }}
-      <button class="close-button">Close</button>
+            <form action="/cart" method="post">
+              <input type="hidden" name="productId" value="{{_id}}" />
+              <input type="hidden" name="title" value="{{title}}" />
+              <input type="hidden" name="amount" value="{{amount}}" />
+              <input type="hidden" name="cost" value="{{cost}}" />
+              <button type="submit" class="btn btn-primary">Add to Cart</button>
+              <a href="#" class="btn btn-secondary">Contact Seller</a>
+          </div>
+          <small class="text-gray-700">Posted by
+            <strong>{{creator}}</strong>
+            on
+            {{createdAt}}</small>
+<button type="button" class="close-button bg-gray-300 text-gray-700 py-2 px-4 rounded">Close</button>
+        </div>
+      </div>
     </dialog>
+
   {{/each}}
 </div>
