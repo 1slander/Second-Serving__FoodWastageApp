@@ -80,13 +80,15 @@
     </div>
   </dialog>
 {{/if}}
+
+{{! MAIN SECTION }}
 <main>
   <section
     class="bg-section flex flex-col md:flex-col items-center justify-center lg:flex-row w-full py-6"
   >
-    <div class="text-center md:2/5 lg:w-2/4 xl:w-2/4 py-6">
+    <div class="text-center md:w-2/5 lg:w-2/4 xl:w-2/4 py-6">
       <h1
-        class="text-5xl md:mr-4 lg:text-6xl lg:mr-4 text-color font-bold mb-3"
+        class="text-5xl md:mr-4 md:h-1/3 lg:text-6xl lg:mr-4 text-color font-bold mb-3"
       >Give Food A
         <span class="border-b-2 border-current">Second</span>
         Home</h1>
@@ -94,8 +96,69 @@
         Lorem ipsum dolor, sit amet consectetur adipisicing elit.
       </p>
     </div>
-    <div class="py-6 md:w-3/5 lg:w-2/5 xl:w-1/4">
-      <img class="rounded" src="/images/title_img1.jpg" alt="People cooking" />
+    <div class="py-6 md:w-5/12 md:h-5/12 lg:w-2/5 xl:w-1/4 flex justify-center">
+      <img
+        class="rounded w-3/4 md:w-max"
+        src="/images/title_img1.jpg"
+        alt="People cooking"
+      />
     </div>
   </section>
 </main>
+
+{{!-- CARD MENU --}}
+
+<section class="information bg-header text-white p-5 flex flex-col ">
+    <h2
+      class="card-title text-center p-4 uppercase font-bold font text-3xl border-b-2 sm:self-center "
+    >What we offer</h2>
+  <div class="card-container my-4 flex flex-col text-center sm:flex-col sm:items-center  md:flex-row sm:px-5">
+    {{! Card }}
+    <div class="card mt-6 border-b-2 p-2 md:w-1/3 md:border-none">
+      <img class="card-img mb-2" src="/images/card1.jpg" alt="" />
+      <div class="card-body my-3">
+        <h2 class="card-title uppercase font-bold font text-2xl my-3">title</h2>
+        <p class="card-text mb-4 font-bold">Lorem ipsum dolor sit, amet
+          consectetur adipisicing elit. Et sed eveniet quisquam amet iusto
+          voluptatem laboriosam dignissimos iure?</p>
+        <a
+          class="card-link text-color bg-section px-2 py-1 hover:bg-gray-500 hover:text-white"
+          href="#"
+        >Read More</a>
+      </div>
+    </div>
+    {{! Card end }}
+    {{! Card }}
+    <div class="card mt-6 border-b-2 p-2 md:w-1/3 md:border-none">
+      <img class="card-img mb-2" src="/images/card2.jpg" alt="" />
+       <div class="card-body my-3">
+     <h2 class="card-title uppercase font-bold font text-2xl my-3">title</h2>
+        <p class="card-text mb-4 font-bold">Lorem ipsum dolor sit, amet
+          consectetur adipisicing elit. Et sed eveniet quisquam amet iusto
+          voluptatem laboriosam dignissimos iure?</p>
+        <a
+          class="card-link text-color bg-section px-2 py-1 hover:bg-gray-500 hover:text-white"
+          href="#"
+        >Read More</a>
+        </div>
+      </div>
+    {{! Card end }}
+    {{! Card }}
+    <div class="card mt-6 p-2 md:w-1/3">
+      <img class="card-img mb-2" src="/images/card3.jpg" alt="" />
+      <div class="card-body my-3">
+        <h2 class="card-title uppercase font-bold font text-2xl my-3">title</h2>
+        <p class="card-text mb-4 font-bold">Lorem ipsum dolor sit, amet
+          consectetur adipisicing elit. Et sed eveniet quisquam amet iusto
+          voluptatem laboriosam dignissimos iure?</p>
+        <a
+          class="card-link text-color bg-section px-2 py-1 hover:bg-gray-500 hover:text-white"
+          href="#"
+        >Read More</a>
+      </div>
+    </div>
+    </div>
+    {{! Card end }}
+  </div>
+
+</section>
