@@ -13,75 +13,147 @@
 {{else}}
 
   <dialog class="modal" id="signup">
-    <div id="form" class="signup-form">
-      <h2 class="text-lg font-bold mb-3 ">Sign Up:</h2>
-      <form action="/signup" method="POST">
+    <div id="form" class="p-4">
+      <h2 class="text-2xl mb-4">Sign Up</h2>
+      <form action="/signup" method="POST" class="flex flex-col space-y-4">
 
-        <label class="font-bold ">
-          Username:
-          <input class="border-2 px-2 my-2 w-full text-black" type="text" name="username" placeholder="Your username" />
+        <label class="flex flex-col">
+          <span class="text-sm mb-1">Username:</span>
+          <input
+            type="text"
+            name="username"
+            placeholder="Your username"
+            class="border rounded py-2 px-3"
+          />
         </label>
 
-        <label class="font-bold ">
-          Email:
-          <input class="border-2 px-2 mb-2 w-full text-black"  type="email" name="email" placeholder="Your email" />
+        <label class="flex flex-col">
+          <span class="text-sm mb-1">Email:</span>
+          <input
+            type="email"
+            name="email"
+            placeholder="Your email"
+            class="border rounded py-2 px-3"
+          />
         </label>
-        
-        <label class="font-bold ">
-          Password:
-          <input class="border-2 px-2 mb-2 w-full text-black"  type="password" name="password" placeholder="Your password" />
-        </label>
-        
-        <label class="font-bold ">
-          Address:
-          <input class="border-2 px-2 mb-2 w-full text-black"  type="text" name="address" placeholder="Address" />
-          <input class="border-2 px-2 mb-2 w-full text-black"  type="text" name="city" placeholder="city" />
-          <input class="border-2 px-2 mb-2 w-full text-black"  type="text" name="postcode" placeholder="postcode" />
-          <input class="border-2 px-2 mb-2 w-full" type="text" name="country" placeholder="country" />
-        </label>
-  
-        <div class="signup-btns gap-2">
-        <button class="bg-section px-3 py-1 font-bold uppercase hover:bg-gray-400 hover:text-white" type="submit">Sign Up</button>
-        <button class="close-button bg-section px-3 py-1 font-bold uppercase hover:bg-gray-400 hover:text-white">Close</button>
 
-        </div>
+        <label class="flex flex-col">
+          <span class="text-sm mb-1">Password:</span>
+          <input
+            type="password"
+            name="password"
+            placeholder="Your password"
+            class="border rounded py-2 px-3"
+          />
+        </label>
+
+        <label class="flex flex-col">
+          <span class="text-sm mb-1">Address:</span>
+          <input
+            type="text"
+            name="address"
+            placeholder="Address"
+            class="border rounded py-2 px-3"
+          />
+        </label>
+
+        <label class="flex flex-col">
+          <span class="text-sm mb-1">City:</span>
+          <input
+            type="text"
+            name="city"
+            placeholder="City"
+            class="border rounded py-2 px-3"
+          />
+        </label>
+
+        <label class="flex flex-col">
+          <span class="text-sm mb-1">Postcode:</span>
+          <input
+            type="text"
+            name="postcode"
+            placeholder="Postcode"
+            class="border rounded py-2 px-3"
+          />
+        </label>
+
+        <label class="flex flex-col">
+          <span class="text-sm mb-1">Country:</span>
+          <input
+            type="text"
+            name="country"
+            placeholder="Country"
+            class="border rounded py-2 px-3"
+          />
+        </label>
+
+        <button
+          type="submit"
+          class="bg-blue-500 text-white py-2 px-4 rounded"
+        >Sign Up</button>
+        <button
+          type="button"
+          class="close-button bg-gray-300 text-gray-700 py-2 px-4 rounded"
+        >Close</button>
 
         {{#if errorMessage}}
-          <p class="error">{{errorMessage}}</p>
+          <p class="error mt-4">{{errorMessage}}</p>
         {{/if}}
       </form>
     </div>
   </dialog>
 
   <dialog class="modal" id="login">
-    <div id="login-form" class="login-form">
-      <h2 class='text-lg font-bold mb-3' >Log In</h2>
-      <form action="/login" method="POST">
+    <div id="login-form" class="p-4">
+      <h2 class="text-2xl mb-4" style="color: #08415c;">Log In</h2>
+      <form action="/login" method="POST" class="flex flex-col space-y-4">
 
-        <label>
-          Username
-          <input type="text" name="username" placeholder="Your username" />
+        <label class="flex flex-col">
+          <span class="text-sm mb-1" style="color: #08415c;">Username:</span>
+          <input
+            type="text"
+            name="username"
+            placeholder="Your username"
+            class="border rounded py-2 px-3"
+          />
         </label>
 
-        <label>
-          Email
-          <input type="email" name="email" placeholder="Your email" />
+        <label class="flex flex-col">
+          <span class="text-sm mb-1" style="color: #08415c;">Email:</span>
+          <input
+            type="email"
+            name="email"
+            placeholder="Your email"
+            class="border rounded py-2 px-3"
+          />
         </label>
 
-        <label>
-          Password
-          <input type="password" name="password" placeholder="Your password" />
+        <label class="flex flex-col">
+          <span class="text-sm mb-1" style="color: #08415c;">Password:</span>
+          <input
+            type="password"
+            name="password"
+            placeholder="Your password"
+            class="border rounded py-2 px-3"
+          />
         </label>
 
-        <button type="submit">Log In</button>
-        <button type="submit" class="close-button">Close</button>
+        <button
+          type="submit"
+          class="bg-blue-500 text-white py-2 px-4 rounded"
+        >Log In</button>
+        <button
+          type="button"
+          class="close-button bg-gray-300 text-gray-700 py-2 px-4 rounded"
+        >Close</button>
 
         {{#if errorMessage}}
-          <p class="error">{{errorMessage}}</p>
+          <p class="error mt-4" style="color: #08415c;">{{errorMessage}}</p>
         {{/if}}
       </form>
     </div>
   </dialog>
+
 {{/if}}
 
 {{! MAIN SECTION }}
