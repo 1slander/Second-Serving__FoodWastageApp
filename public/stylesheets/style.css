@@ -69,10 +69,8 @@ dialog {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: var(--bg-header2);
-  border: 2px solid var(--bg-section2);
+  background-color: rgb(244, 248, 244);
   padding: 1.5em 2em;
-  color: var(--text-white);
 }
 
 .login-form,
