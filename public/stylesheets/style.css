@@ -62,8 +62,8 @@ h1 {
 
 .card-advert {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: 5px;
+  grid-template-columns: repeat(auto-fit, minmax(133px, 1fr));
+  gap: 3px;
 }
 
 .card-advert-info {
