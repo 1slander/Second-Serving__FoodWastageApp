@@ -66,14 +66,14 @@
                   class="h-7"
                   alt="Update image"
                 /></a>
-              <a
-                href="/adverts/{{_id}}/delete"
-                class="mr-5 bg-gray-300 text-gray-700 py-2 px-4 rounded hover:bg-gray-600 hover:text-white"
-              ><img
-                  src="/images/delete.png"
-                  class="h-7"
-                  alt="Deletion image"
-                /></a>
+              <form action="/adverts/{{_id}}/delete" method="post"><button
+                  type="submit"
+                  class="mr-5 bg-gray-300 text-gray-700 py-2 px-4 rounded hover:bg-gray-600 hover:text-white"
+                ><img
+                    src="/images/delete.png"
+                    class="h-7"
+                    alt="Deletion image"
+                  /></button></form>
             </div>
           </div>
           <small class="text-gray-400">Posted by
