@@ -1,12 +1,12 @@
 <div class="card-advert">
   {{#each adverts}}
-    <div class="card-advert-info open-button relative" id="{{@index}}">
+    <div class="card-advert-info open-button relative m-7" id="{{@index}}">
       <a href="/adverts/{{_id}}" onclick="return false;">
         <div>
           <img
             src="{{imageUrl}}"
             alt="{{title}}"
-            class="transition duration-300 ease-in-out hover:opacity-75 open-button"
+            class="transition duration-300 ease-in-out hover:opacity-75 open-button object-cover w-64 h-64"
             id="{{@index}}"
           />
         </div>

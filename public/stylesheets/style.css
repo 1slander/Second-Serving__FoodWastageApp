@@ -63,6 +63,9 @@ h1 {
 .card-advert {
   /* //border: 1px solid black; */
   margin: 1em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 dialog {
