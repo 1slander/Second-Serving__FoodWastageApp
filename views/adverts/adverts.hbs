@@ -1,26 +1,25 @@
-<div class="card-advert">
+<div class="card-advert m-20">
   {{#each adverts}}
-    <div class="card-advert-info open-button relative m-7" id="{{@index}}">
+    <div class="card-advert-info open-button relative" id="{{@index}}">
       <a href="/adverts/{{_id}}" onclick="return false;">
-        <div>
+        <div class="bg-contain">
           <img
             src="{{imageUrl}}"
             alt="{{title}}"
-            class="transition duration-300 ease-in-out hover:opacity-75 open-button object-cover w-64 h-64"
+            class="transition duration-300 ease-in-out hover:opacity-75 open-button object-cover"
             id="{{@index}}"
           />
         </div>
         <h5 class="absolute top-0 left-0 p-2 text-white">{{title}}</h5>
       </a>
-      <div>
-        <form action="/adverts/{{_id}}/delete" method="POST">
-
-        </form>
-      </div>
     </div>
 
     <dialog class="modal" id="{{@index}}">
       <div class="modal-background">
+        <button
+          type="button"
+          class="close-button bg-gray-300 text-gray-700 py-2 px-4 rounded hover:bg-gray-600 hover:text-white absolute top-0 right-0 m-4"
+        >X</button>
         <img
           src="{{imageUrl}}"
           alt="Advert Image"
@@ -28,44 +27,61 @@
         />
       </div>
       <div class="modal-content bg-gray-200 p-4">
-        <h2
-          class="text-2xl mb-4 absolute top-0 left-0 ml-4 mt-4"
-          style="color: #08415c;"
-        >{{title}}</h2>
+        <h2 class="text-2xl mb-4">{{title}}</h2>
         <div class="relative">
           <p>{{description}}</p>
           <div class="mt-4">
             <p><strong>Amount:</strong> {{amount}}</p>
             <p><strong>Cost:</strong> {{cost}}</p>
           </div>
-          <div class="mt-4">
-
-            <form action="/cart" method="post">
-              <input type="hidden" name="productId" value="{{_id}}" />
-              <input type="hidden" name="title" value="{{title}}" />
-              <input type="hidden" name="amount" value="{{amount}}" />
-              <input type="hidden" name="cost" value="{{cost}}" />
-              <button
-                type="submit"
-                class="btn btn-primary bg-blue-500 text-white py-2 px-4 rounded uppercase hover:bg-blue-700 font-bold"
-              >Add to Cart</button>
+          <div class="mt-4 mb-4">
+            <div class="flex">
+              <form action="/cart" method="post">
+                <input type="hidden" name="productId" value="{{_id}}" />
+                <input type="hidden" name="title" value="{{title}}" />
+                <input type="hidden" name="amount" value="{{amount}}" />
+                <input type="hidden" name="cost" value="{{cost}}" />
+                <button
+                  type="submit"
+                  class="mr-5 bg-gray-300 text-gray-700 py-2 px-4 rounded hover:bg-gray-600 hover:text-white"
+                ><img
+                    src="/images/buy.png"
+                    class="h-7"
+                    alt="Cart image"
+                  /></button>
               </form>
-              <a href="/contact/{{_id}}" class="btn btn-secondary">Contact
-                Seller</a>
-              <a href="/adverts/{{_id}}/delete" class="btn btn-secondary">Delete</a>
-              <a href="/adverts/{{_id}}" class="btn btn-success">Update</a>
+              <a
+                href="/contact/{{_id}}"
+                class="mr-5 bg-gray-300 text-gray-700 py-2 px-4 rounded hover:bg-gray-600 hover:text-white"
+              ><img
+                  src="/images/message.png"
+                  class="h-7"
+                  alt="Message image"
+                /></a>
+              <a
+                href="/adverts/{{_id}}"
+                class="mr-5 bg-gray-300 text-gray-700 py-2 px-4 rounded hover:bg-gray-600 hover:text-white"
+              ><img
+                  src="/images/update-arrows.png"
+                  class="h-7"
+                  alt="Update image"
+                /></a>
+              <a
+                href="/adverts/{{_id}}/delete"
+                class="mr-5 bg-gray-300 text-gray-700 py-2 px-4 rounded hover:bg-gray-600 hover:text-white"
+              ><img
+                  src="/images/delete.png"
+                  class="h-7"
+                  alt="Deletion image"
+                /></a>
+            </div>
           </div>
-          <small class="text-gray-700">Posted by
+          <small class="text-gray-400">Posted by
             <strong>{{creator}}</strong>
             on
             {{createdAt}}</small>
-          <button
-            type="button"
-            class="close-button bg-gray-300 text-gray-700 py-2 px-4 rounded hover:bg-gray-600 hover:text-white"
-          >Close</button>
         </div>
       </div>
     </dialog>
-
   {{/each}}
 </div>
