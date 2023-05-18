@@ -100,3 +100,10 @@ dialog {
 .text-color {
   color: var(--text-color);
 }
+
+/* CART */
+
+.cart-item-name {
+  position: relative;
+  right: 1em;
+}

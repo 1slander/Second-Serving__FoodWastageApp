@@ -1,48 +1,67 @@
-<h1>CART</h1>
+<section class="cart-section text-center p-5 bg-section h-full">
 
-<a href="/adverts">Keep buying</a>
-{{#if userCart}}
-  <table class="cart">
-    <th>
-      <tr>
-        <th>Product</th>
-        <th>Quantity</th>
-        <th>Price</th>
-      </tr>
-    </th>
-    <tbody>
-      {{#each userCart.products}}
-        <tr class="cart-item">
-          <td class="cart-item-name">{{this.title}}</td>
-          <td class="cart-item-qty">{{this.amount}}</td>
-          <td class="cart-item-price">{{this.cost}}</td>
+  <div class="flex justify-between mb-4">
+    <h1 class="text-lg font-bold uppercase text-color"><span
+        class="border-b-2 border-current"
+      >{{userInSession.username}}</span>
+      CART</h1>
+
+    <a href="/adverts">Keep buying</a>
+
+  </div>
+  {{#if userCart}}
+    <table class="cart flex flex-col gap-4 ml-4 mt-4">
+      <th class="flex justify-center">
+        <tr class="flex justify-around">
+          <th class="">Product</th>
+          <th class="">Quantity</th>
+          <th>Price</th>
+          <th>Remove</th>
+        </tr>
+      </th>
+      <tbody class="flex flex-col">
+        {{#each userCart.products}}
+          <tr
+            class="cart-item flex justify-around items-center border-b-2 pb-2 pt-2"
+          >
+            <td class="cart-item-name">{{this.title}}</td>
+            <td class="cart-item-qty">{{this.amount}}</td>
+            <td class="cart-item-price">{{this.cost}}</td>
+            <td>
+              <form action="/cart/{{this._id}}/delete" method="post">
+                <button
+                  type="submit"
+                  class="font-bold text-red-400 hover:text-red-800"
+                >x</button>
+              </form>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+      <tfoot class="">
+        <tr class="cart-total flex justify-around items-center gap-5 m-3">
           <td>
-            <form action="/cart/{{this._id}}/delete" method="post">
-              <button type="submit">x</button>
+            <h2 class="cart-total-price font-bold text-xl text-color">Total: £
+              <span class="">{{price}}</span>
+            </h2>
+          </td>
+          <td>
+            <form action="/cart/checkout" method="post">
+              {{#each userCart.products}}
+                <input type="hidden" name="productId" value="{{_id}}" />
+              {{/each}}
+              <button
+                type="submit"
+                class="font-bold bg-yellow-400 px-3 py-2 rounded text-white hover:text-grey-400 hover:bg-yellow-600 uppercase"
+              >Checkout</button>
             </form>
           </td>
         </tr>
-      {{/each}}
-    </tbody>
-    <tfoot>
-      <tr class="cart-total">
-        <td>
-          <h2 class="cart-total-price">
-            £<span>{{price}}</span>
-          </h2>
-        </td>
-        <td>
-          <form action="/cart/checkout" method="post">
-            {{#each userCart.products}}
-              <input type="hidden" name="productId" value="{{_id}}" />
-            {{/each}}
-            <button type="submit">Checkout</button>
-          </form>
-        </td>
-      </tr>
-    </tfoot>
+      </tfoot>
 
-  </table>
-{{else}}
-  <p>Your cart is empty.</p>
-{{/if}}
+    </table>
+  {{else}}
+    <p>Your cart is empty.</p>
+  {{/if}}
+
+</section>

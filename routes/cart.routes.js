@@ -15,7 +15,7 @@ router.get("/", async (req, res, next) => {
     const userCart = await CartModel.findOne({ user: userId });
 
     if (!userCart) {
-      res.render("cart/cart.hbs");
+      res.render("cart/cart.hbs", { userInSession: req.session.currentUser });
     } else {
       userCart.products.forEach(
         (product) => (price += product.cost * product.amount)
@@ -81,21 +81,11 @@ router.post("/:productId/delete", async (req, res) => {
 router.post("/checkout", async (req, res) => {
   const userId = req.session.currentUser._id;
   const products = req.body;
-
   try {
-    if (products.length > 1) {
-      for (const product of products) {
-        let deleteProduct = await AdvertModel.findOne({ item: product });
-        console.log("This Product", deleteProduct);
-      }
-      const userCart = await CartModel.findOne({ user: userId });
-    } else if (products.length === 1) {
-      const deleteProduct = await AdvertModel.findOne({ item: products[0] });
-      console.log("1 product delete", deleteProduct);
-      const userCart = await CartModel.findOne({ user: userId });
-      console.log("cart delete");
-    }
-    res.redirect("/cart");
+    const deleteCart = await CartModel.findOneAndDelete({ user: userId });
+    res.render("cart/cartsuccess.hbs", {
+      userInSession: req.session.currentUser,
+    });
   } catch (error) {
     console.log(error);
   }
@@ -118,6 +108,24 @@ module.exports = router;
 //     console.log("cart delete");
 //   }
 //   res.redirect("/adverts");
+// } catch (error) {
+//   console.log(error);
+// }
+
+// try {
+//   if (products.length > 1) {
+//     for (const product of products) {
+//       let deleteProduct = await AdvertModel.findOne({ item: product });
+//       console.log("This Product", deleteProduct);
+//     }
+//     const userCart = await CartModel.findOne({ user: userId });
+//   } else if (products.length === 1) {
+//     const deleteProduct = await AdvertModel.findOne({ item: products[0] });
+//     console.log("1 product delete", deleteProduct);
+//     const userCart = await CartModel.findOne({ user: userId });
+//     console.log("cart delete");
+//   }
+//   res.redirect("/cart");
 // } catch (error) {
 //   console.log(error);
 // }
