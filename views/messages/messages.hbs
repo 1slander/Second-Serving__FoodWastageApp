@@ -1,6 +1,8 @@
-<section class="bg-header h-full">
+<section
+  class="bg-header h-full flex flex-col justify-center items-center border-t-2"
+>
 
-  <div class="flex justify-center bg-section p-3">
+  <div class="bg-section p-12 rounded flex">
 
     {{#if messages}}
       <table>
@@ -13,7 +15,7 @@
             <th class="text-xl font-bold text-color">
               Subject
             </th>
-            <th class="text-xl font-bold text-color">
+            <th class="hidden md:block text-xl font-bold text-color">
               Message
             </th>
           </tr>
@@ -28,7 +30,7 @@
                 <a href="/{{this._id}}" class="mx-16">{{this.subject}}</a>
 
               </td>
-              <td class="">
+              <td class="hidden md:block">
                 <p>
                   {{this.message}}
                 </p>
@@ -55,7 +57,7 @@
   <div class="flex space-x-12 mt-8 justify-center">
     <a
       class="text-xs bg-blue-500 text-white p-2 rounded hover:text-white hover:bg-blue-800 self-center"
-      href="/userProfile"
+      href="/adverts"
     >Go Back</a>
     <a
       href="/sendMessage"
