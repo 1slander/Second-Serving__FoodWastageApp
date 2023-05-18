@@ -9,9 +9,7 @@
     <div>
       <h1 class="font-bold text-xl ml-4">Message:</h1>
       <div class="bg-white h-32 w-128">
-      <p
-        class="flex justify-start mx-4 my-4"
-      >{{findedMessage.message}}</p>
+        <p class="flex justify-start mx-4 my-4">{{findedMessage.message}}</p>
       </div>
     </div>
   </div>
@@ -20,8 +18,64 @@
     <a
       href="/{{findedMessage._id}}/reply"
       onclick="return false"
-      id="messageModal"
+      id="message{{@index}}"
       class="open-button font-bold bg-yellow-400 px-2 py-1 rounded text-white hover:text-white hover:bg-yellow-600"
     >Answer</a>
   </div>
+  <dialog class="modal p-4" id="message{{@index}}">
+    <form
+      action="/{{findedMessage._id}}/reply"
+      method="POST"
+      class="flex flex-col"
+    >
+      <h2 class="text-2xl mb-4" style="color: #08415c;">Message</h2>
+
+      <label for="recipient" class="flex flex-col">
+        <span class="text-sm mb-1" style="color: #08415c;">Recipient:</span>
+        <input
+          type="text"
+          value="{{findedMessage.sender.username}}"
+          name="recipient"
+          required
+          id="recipient"
+          class="border rounded py-2 px-3"
+        />
+      </label>
+
+      <label for="subject" class="flex flex-col">
+        <span class="text-sm mb-1" style="color: #08415c;">Subject:</span>
+        <input
+          type="text"
+          name="subject"
+          value="{{findedMessage.subject}}"
+          required
+          id="subject"
+          class="border rounded py-2 px-3"
+        />
+      </label>
+
+      <label for="message" class="flex flex-col mb-2 rounded">
+        <span
+          class="text-sm mb-2 rounded"
+          style="color: #08415c;"
+        >Message:</span>
+        <textarea
+          class="rounded"
+          name="message"
+          id="message"
+          rows="5"
+        ></textarea>
+      </label>
+
+      <button
+        type="submit"
+        class="mb-2 font-bold bg-yellow-400 px-2 py-1 rounded text-white hover:text-white hover:bg-yellow-600"
+      >Send Message</button>
+
+      <button
+        type="button"
+        class="close-button bg-gray-300 text-gray-700 py-2 px-4 rounded"
+      >Close</button>
+    </form>
+  </dialog>
 </div>
