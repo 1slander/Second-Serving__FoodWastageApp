@@ -1,53 +1,63 @@
-<h1>You Inbox</h1>
+<div class="container mx-auto">
+  <div
+    class="flex justify-center bg-green-50 rounded-lg shadow-lg h-72 ml-8 mr-8 mt-64 pb-8 max-w-xl"
+  >
 
-{{#if messages}}
-  <table>
+    {{#if messages}}
+      <table>
 
-    <th>
-      <tr>
         <th>
-          User
+          <tr>
+            <th class="text-xl font-bold">
+              User
+            </th>
+            <th class="text-xl font-bold">
+              Subject
+            </th>
+            <th class="text-xl font-bold">
+              Message
+            </th>
+          </tr>
         </th>
-        <th>
-          Subject
-        </th>
-        <th>
-          Message
-        </th>
-      </tr>
-    </th>
-    <tbody>
-      {{#each messages}}
-        <tr>
-          <td>
-            {{this.sender.username}}
-          </td>
-          <td>
-            <a href="/{{this._id}}">{{this.subject}}</a>
+        <tbody>
+          {{#each messages}}
+            <tr>
+              <td class="border border-slate-700">
+                {{this.sender.username}}
+              </td>
+              <td class="border border-slate-700 ...">
+                <a href="/{{this._id}}" class="mx-16">{{this.subject}}</a>
 
-          </td>
-          <td>
-            <p>
-              {{this.message}}
-            </p>
-          </td>
-          <td>
-            <form action="/{{this._id}}/delete" method="post">
-              <button
-                type="s
+              </td>
+              <td class="border border-slate-700 ...">
+                <p>
+                  {{this.message}}
+                </p>
+              </td>
+              <td>
+                <form action="/{{this._id}}/delete" method="post">
+                  <button
+                    class="text-red-700 hover:bg-red-500 hover:text-white"
+                    type="s
             "
-              >Delete</button>
-            </form>
-          </td>
-        </tr>
+                  >Delete</button>
+                </form>
+              </td>
+            </tr>
 
-      {{/each}}
-    </tbody>
-  </table>
-{{else}}
-  <p>No Messages</p>
-{{/if}}
+          {{/each}}
+        </tbody>
+      </table>
+    {{else}}
+      <p>No Messages</p>
+    {{/if}}
+  </div>
+</div>
+<div class="flex space-x-12 mt-8 justify-center">
+  <a href="/userProfile">Go Back</a>
+  <a
+    href="/sendMessage"
+    class="font-bold bg-yellow-400 px-2 py-1 rounded text-white hover:text-white hover:bg-yellow-600"
+  >Write a message</a>
 
-<a href="/sendMessage">Write a message</a>
-
-<a href="/userProfile">Go Back</a>
+</div>
