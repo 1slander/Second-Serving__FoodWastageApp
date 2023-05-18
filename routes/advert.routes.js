@@ -31,7 +31,7 @@ router.post(
         cost,
         imageUrl: image,
       });
-      res.redirect("/userProfile");
+      res.redirect("/adverts");
     } catch (error) {
       console.error(error);
       res.status(500).send("Server Error");
