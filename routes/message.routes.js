@@ -28,7 +28,9 @@ router.get("/messages", async (req, res) => {
 // Create a new message
 
 router.get("/sendMessage", isLoggedIn, async (req, res) => {
-  res.render("messages/send-messages.hbs");
+  res.render("messages/send-messages.hbs", {
+    userInSession: req.session.currentUser,
+  });
 });
 
 router.post("/sendMessage", isLoggedIn, async (req, res) => {
@@ -59,7 +61,10 @@ router.get("/:messageId", isLoggedIn, async (req, res) => {
   try {
     const { messageId } = req.params;
     const findedMessage = await Message.findById(messageId).populate("sender");
-    res.render("messages/message-detail.hbs", { findedMessage });
+    res.render("messages/message-detail.hbs", {
+      findedMessage,
+      userInSession: req.session.currentUser,
+    });
   } catch (err) {
     console.log(err);
   }
