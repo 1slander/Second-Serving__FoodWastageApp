@@ -134,3 +134,15 @@ dialog {
   bottom: 0;
   width: 100%;
 } */
+
+/* MESSAGES */
+
+.hidden-message {
+  display: none;
+}
+
+@media screen (min-width: 600px) {
+  .hidden-message {
+    display: block;
+  }
+}
